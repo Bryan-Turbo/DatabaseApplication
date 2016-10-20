@@ -22,22 +22,33 @@ namespace Assignment_1.UserControls.EntityViews {
     /// </summary>
     public partial class EmployeeViewer : UserControl {
         public  DatabaseConnection Connection;
-        private List<Employee> employeeList;
+        private List<Employee> _employeeList;
         public EmployeeViewer() {
             InitializeComponent();
             Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            employeeList = EntityContentSelector.SelectEmployee(this.Connection);
-            foreach (Employee employee in employeeList) {
+            _employeeList = EntityContentSelector.SelectEmployee(this.Connection);
+            PopulateViewer();
+        }
+
+        public void PopulateViewer() {
+            EmployeeList.Items.Clear();
+            foreach (Employee employee in _employeeList) {
                 EmployeeList.Items.Add(employee);
             }
         }
 
         public void RemoveEmployee(Employee employee) {
             EmployeeList.Items.Remove(employee);
+            _employeeList.Remove(employee);
         }
 
         public Employee GetSelectedEmployee() {
-            return employeeList[EmployeeList.SelectedIndex];
+            return _employeeList[EmployeeList.SelectedIndex];
+        }
+
+        public void UpdateViewer() {
+            _employeeList = EntityContentSelector.SelectEmployee(this.Connection);
+            PopulateViewer();
         }
 
         public bool IsSelected() {

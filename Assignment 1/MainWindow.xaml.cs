@@ -24,7 +24,6 @@ namespace Assignment_1 {
     /// </summary>
     public partial class MainWindow : Window {
         private DatabaseConnection _connection;
-        private Task _labelUpdater;
         public MainWindow() {
             InitializeComponent();
             _connection = new DatabaseConnection("localhost", "assignment1", "root", "");

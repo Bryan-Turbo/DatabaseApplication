@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:applicationWindows="clr-namespace:Assignment_1.UserControls.ApplicationWindows"
+        xmlns:windowViews="clr-namespace:Assignment_1.UserControls.ApplicationWindows.WindowViews"
         x:Class="Assignment_1.MainWindow"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
@@ -13,11 +14,11 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="Label" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Background="#10893E" Foreground="#EEEEEE"/>
+        <Label x:Name="Header" Content="Label" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Background="#10893E" Foreground="#EEEEEE"/>
 
         
         
-        <applicationWindows:AddEmployeeWindow x:Name="AddEmployeeWindow" Visibility="Hidden" Grid.Row="1"/>
-        <applicationWindows:ViewEmployeeWindow x:Name="ViewEmployeesWindow" Visibility="Visible" Grid.Row="1"/>
+        <!--<windowViews:AddEmployeeWindow x:Name="AddEmployeeWindow" Visibility="Visible" Grid.Row="1"/>-->
+        <windowViews:ViewEmployeeWindow x:Name="ViewEmployeesWindow" Visibility="Visible" Grid.Row="1"/>
     </Grid>
 </Window>

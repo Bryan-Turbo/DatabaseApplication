@@ -23,11 +23,11 @@ namespace Assignment_1.ExternalWindow {
         private Employee _employee;
         private DatabaseConnection _connection;
         private List<Headquarters> _headquartersList;
-        public EmployeeEditor(Employee employee) {
+        public EmployeeEditor(Employee employee, DatabaseConnection connection) {
             InitializeComponent();
             _employee = employee;
             EmployeeBsn.Content = $"Employee with BSN: { _employee.Bsn.ToString("000000000")}";
-            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
+            _connection = connection;//new DatabaseConnection("localhost", "assignment1", "root", "");
             _headquartersList = EntityContentSelector.SelectHeadquarters(this._connection);
             foreach (Headquarters hq in _headquartersList) {
                 HeadquarterList.Items.Add($"{hq.PostalCode},\t{hq.BuildingName}");
