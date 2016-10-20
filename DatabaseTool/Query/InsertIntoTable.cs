@@ -16,5 +16,9 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void InsertEmployeeAdress(DatabaseConnection connection, int bsn, string postalCode, string country, bool isResidence) {
+            
+        }
     }
 }

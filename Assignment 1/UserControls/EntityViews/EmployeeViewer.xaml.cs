@@ -21,7 +21,7 @@ namespace Assignment_1.UserControls.EntityViews {
     /// Interaction logic for EmployeeViewer.xaml
     /// </summary>
     public partial class EmployeeViewer : UserControl {
-        public  DatabaseConnection Connection;
+        public readonly DatabaseConnection Connection;
         private List<Employee> _employeeList;
         public EmployeeViewer() {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Assignment_1.UserControls.EntityViews {
             PopulateViewer();
         }
 
-        public void PopulateViewer() {
+       private void PopulateViewer() {
             EmployeeList.Items.Clear();
             foreach (Employee employee in _employeeList) {
                 EmployeeList.Items.Add(employee);

@@ -57,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExternalWindow\EmployeeAdressWindow.xaml.cs">
+      <DependentUpon>EmployeeAdressWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExternalWindow\EmployeeEditor.xaml.cs">
       <DependentUpon>EmployeeEditor.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <DependentUpon>EmployeeViewer.xaml</DependentUpon>
     </Compile>
     <Page Include="DatabaseUserInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\EmployeeAdressWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

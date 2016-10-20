@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DatabaseTool.Entities;
 
 namespace Assignment_1.UserControls.EntityViews {
     /// <summary>
@@ -20,6 +21,12 @@ namespace Assignment_1.UserControls.EntityViews {
     public partial class AdressListViewer : UserControl {
         public AdressListViewer() {
             InitializeComponent();
+        }
+
+        public void AddAdresses(List<Adress> adressList) {
+            foreach (Adress adress in adressList) {
+                AdressViewer.Items.Add(adress);
+            }
         }
     }
 }

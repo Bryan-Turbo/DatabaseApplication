@@ -50,5 +50,10 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
             DeleteFromTable.DeleteEmployee(this.EmployeeViewer.Connection, this.EmployeeViewer.GetSelectedEmployee().Bsn);
             this.EmployeeViewer.RemoveEmployee(this.EmployeeViewer.GetSelectedEmployee());
         }
+
+        private void EmployeeAdress_Click(object sender, RoutedEventArgs e) {
+            EmployeeAdressWindow window = new EmployeeAdressWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+            window.ShowDialog();
+        }
     }
 }
