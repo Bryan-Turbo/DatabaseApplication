@@ -25,6 +25,7 @@ namespace Assignment_1.UserControls.ApplicationWindows {
     /// </summary>
     public partial class ViewEmployeeWindow : UserControl {
         private DispatcherTimer timer;
+
         public ViewEmployeeWindow() {
             InitializeComponent();
             timer = new DispatcherTimer();
@@ -48,9 +49,7 @@ namespace Assignment_1.UserControls.ApplicationWindows {
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e) {
             var result = MessageBox.Show("Are you sure you want to delete this employee from the database?", "CONFIRM DELETION", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.No) {
-                return;
-            }
+            if (result == MessageBoxResult.No) { return; }
             DeleteFromTable.DeleteEmployee(EmployeeViewer.Connection, EmployeeViewer.GetSelectedEmployee().Bsn);
             EmployeeViewer.RemoveEmployee(EmployeeViewer.GetSelectedEmployee());
         }
