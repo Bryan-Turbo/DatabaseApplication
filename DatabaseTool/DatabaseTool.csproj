@@ -61,8 +61,10 @@
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\DeleteFromTable.cs" />
     <Compile Include="Query\EntityContentSelector.cs" />
     <Compile Include="Query\InsertIntoTable.cs" />
+    <Compile Include="Query\UpdateTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -21,15 +21,19 @@ namespace Assignment_1.UserControls.EntityViews {
     /// Interaction logic for EmployeeViewer.xaml
     /// </summary>
     public partial class EmployeeViewer : UserControl {
-        private DatabaseConnection _connection;
+        public  DatabaseConnection Connection;
         private List<Employee> employeeList;
         public EmployeeViewer() {
             InitializeComponent();
-            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            employeeList = EntityContentSelector.SelectEmployee(this._connection);
+            Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
+            employeeList = EntityContentSelector.SelectEmployee(this.Connection);
             foreach (Employee employee in employeeList) {
                 EmployeeList.Items.Add(employee);
             }
+        }
+
+        public void RemoveEmployee(Employee employee) {
+            EmployeeList.Items.Remove(employee);
         }
 
         public Employee GetSelectedEmployee() {

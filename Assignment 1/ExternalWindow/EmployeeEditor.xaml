@@ -17,10 +17,10 @@
         <Label x:Name="EmployeeSurname" Content="Surname" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Height="40" Width="185" RenderTransformOrigin="0.438,3.35"/>
         <Label x:Name="EmployeeHq" Content="Main HQ" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Height="40" Width="185" RenderTransformOrigin="0.438,3.35"/>
         <ComboBox x:Name="HeadquarterList" VerticalContentAlignment="Center" Margin="200,160,10,0" VerticalAlignment="Top" Height="40"/>
+
+
         <Button x:Name="ResetButton" Content="Reset Fields" Click="ResetFields"  Margin="10,0,10,10" Height="65" VerticalAlignment="Bottom"/>
-
-
-
-
+        <Button x:Name="ApplyButton" Content="Process Changes" Click="ProcessChanges"  Margin="10,0,10,85" Height="65" VerticalAlignment="Bottom"/>
+        <CheckBox x:Name="Validator" Content="Current information about employee is correct" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10,0,10,155" VerticalAlignment="Bottom" Height="33" />
     </Grid>
 </Window>

@@ -40,5 +40,30 @@ namespace Assignment_1.ExternalWindow {
             SurnameBox.Text = _employee.Surname;
             HeadquarterList.SelectedIndex = _headquartersList.IndexOf(_headquartersList.Select(h => h).Where(h => h.BuildingName == _employee.MainBuildingName).ToList()[0]);
         }
+
+        private void ProcessChanges(object sender, RoutedEventArgs e) {
+            if (NameBox.Text == _employee.Name && SurnameBox.Text == _employee.Surname && _headquartersList[HeadquarterList.SelectedIndex].BuildingName == _employee.MainBuildingName) {
+                MessageBox.Show("No changes were detected", "No Changes", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            bool? isChecked = Validator.IsChecked;
+            if (isChecked != null && !isChecked.Value) {
+                MessageBox.Show("Please make sure to check if the information is correct", "Changes Not Confirmed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string eN = _employee.Name, eS = _employee.Surname, eB = _employee.MainBuildingName;
+            if (NameBox.Text != _employee.Name) {
+                eN = NameBox.Text;
+            }
+            if (SurnameBox.Text != _employee.Surname) {
+                eS = SurnameBox.Text;
+            }
+            if (_headquartersList[HeadquarterList.SelectedIndex].BuildingName != _employee.MainBuildingName) {
+                eB = _headquartersList[HeadquarterList.SelectedIndex].BuildingName;
+            }
+            UpdateTable.UpdateEmployee(this._connection, _employee, eN, eS, eB);
+        }
     }
 }

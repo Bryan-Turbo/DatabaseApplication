@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using Assignment_1.ExternalWindow;
 using Assignment_1.UserControls.EntityViews;
 using DatabaseTool.Connector;
+using DatabaseTool.Query;
 using UserControl = System.Windows.Controls.UserControl;
 
 namespace Assignment_1.UserControls.ApplicationWindows {
@@ -42,11 +43,16 @@ namespace Assignment_1.UserControls.ApplicationWindows {
 
         private void EditButton_Click(object sender, RoutedEventArgs e) {
             EmployeeEditor editor = new EmployeeEditor(EmployeeViewer.GetSelectedEmployee());
-            editor.Show();
+            editor.ShowDialog();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("This feature has not been implemented yet".ToUpper(), "not yet implemented".ToUpper(), MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            var result = MessageBox.Show("Are you sure you want to delete this employee from the database?", "CONFIRM DELETION", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.No) {
+                return;
+            }
+            DeleteFromTable.DeleteEmployee(EmployeeViewer.Connection, EmployeeViewer.GetSelectedEmployee().Bsn);
+            EmployeeViewer.RemoveEmployee(EmployeeViewer.GetSelectedEmployee());
         }
     }
 }
