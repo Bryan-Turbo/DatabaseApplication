@@ -21,19 +21,19 @@ namespace Assignment_1 {
     /// </summary>
     public partial class DatabaseUserInterface : Window {
         private DatabaseConnection _connection;
-        private List<Adress> adressList;
+        private List<Address> adressList;
 
         public DatabaseUserInterface() {
             InitializeComponent();
             _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            adressList = EntityContentSelector.SelectAdress(this._connection);
-            foreach (Adress adress in adressList) {
-                comboBox.Items.Add($"{adress.PostalCode}, {adress.Street}");
+            adressList = EntityContentSelector.SelectAddress(this._connection);
+            foreach (Address address in adressList) {
+                comboBox.Items.Add($"{address.PostalCode}, {address.Street}");
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            Adress Selecteditem = adressList[comboBox.SelectedIndex];
+            Address Selecteditem = adressList[comboBox.SelectedIndex];
             //_connection.InsertIntoTable(BuildingName.Text, Rent.Text, Rooms.Text, Selecteditem.PostalCode, Selecteditem.Country);
         }
     }

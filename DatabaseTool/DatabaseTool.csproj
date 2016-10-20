@@ -50,10 +50,10 @@
   <ItemGroup>
     <Compile Include="Connector\DatabaseConnection.cs" />
     <Compile Include="Connector\IDatabaseConnection.cs" />
-    <Compile Include="Entities\Adress.cs" />
+    <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Degree.cs" />
     <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\EmployeeAdress.cs" />
+    <Compile Include="Entities\EmployeeAddress.cs" />
     <Compile Include="Entities\EmployeeAssociation.cs" />
     <Compile Include="Entities\EmployeeDegree.cs" />
     <Compile Include="Entities\Headquarters.cs" />

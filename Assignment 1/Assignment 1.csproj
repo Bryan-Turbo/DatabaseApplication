@@ -57,8 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ExternalWindow\EmployeeAdressWindow.xaml.cs">
-      <DependentUpon>EmployeeAdressWindow.xaml</DependentUpon>
+    <Compile Include="ExternalWindow\EmployeeAddressWindow.xaml.cs">
+      <DependentUpon>EmployeeAddressWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExternalWindow\EmployeeEditor.xaml.cs">
       <DependentUpon>EmployeeEditor.xaml</DependentUpon>
@@ -72,8 +72,8 @@
     <Compile Include="UserControls\ApplicationWindows\WindowViews\ViewEmployeeWindow.xaml.cs">
       <DependentUpon>ViewEmployeeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EntityViews\AdressListViewer.xaml.cs">
-      <DependentUpon>AdressListViewer.xaml</DependentUpon>
+    <Compile Include="UserControls\EntityViews\AddressListViewer.xaml.cs">
+      <DependentUpon>AddressListViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EntityViews\EmployeeViewer.xaml.cs">
       <DependentUpon>EmployeeViewer.xaml</DependentUpon>
@@ -82,7 +82,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExternalWindow\EmployeeAdressWindow.xaml">
+    <Page Include="ExternalWindow\EmployeeAddressWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\EntityViews\AdressListViewer.xaml">
+    <Page Include="UserControls\EntityViews\AddressListViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

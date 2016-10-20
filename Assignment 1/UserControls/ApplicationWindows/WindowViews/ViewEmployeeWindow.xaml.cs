@@ -26,7 +26,7 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
             if (!this.EmployeeViewer.IsSelected()) { return; }
             this.EditButton.IsEnabled = true;
             this.RemoveButton.IsEnabled = true;
-            this.EmployeeAdress.IsEnabled = true;
+            this.EmployeeAddress.IsEnabled = true;
             this.EmployeeEducation.IsEnabled = true;
             this.EmployeePsotiion.IsEnabled = true;
             this.timer.Stop();
@@ -51,8 +51,8 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
             this.EmployeeViewer.RemoveEmployee(this.EmployeeViewer.GetSelectedEmployee());
         }
 
-        private void EmployeeAdress_Click(object sender, RoutedEventArgs e) {
-            EmployeeAdressWindow window = new EmployeeAdressWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+        private void EmployeeAddress_Click(object sender, RoutedEventArgs e) {
+            EmployeeAddressWindow window = new EmployeeAddressWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
             window.ShowDialog();
         }
     }

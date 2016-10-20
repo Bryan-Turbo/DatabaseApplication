@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DatabaseTool.Entities {
-    public class Adress : IEntity{
+    public class Address : IEntity{
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string City { get; set; }

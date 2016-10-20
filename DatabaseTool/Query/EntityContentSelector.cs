@@ -5,16 +5,16 @@ using MySql.Data.MySqlClient;
 
 namespace DatabaseTool.Query {
     public static class EntityContentSelector {
-        public static List<Adress> SelectAdress(DatabaseConnection connection) {
-            List<Adress> entityList = new List<Adress>();
+        public static List<Address> SelectAddress(DatabaseConnection connection) {
+            List<Address> entityList = new List<Address>();
             connection.Connection.Open();
             int houseNumber;
             MySqlCommand command = connection.Connection.CreateCommand();
-            command.CommandText = "SELECT * FROM adress";
+            command.CommandText = "SELECT * FROM address";
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read()) {
                 int.TryParse(reader["house_number"].ToString(), out houseNumber);
-                entityList.Add(new Adress {
+                entityList.Add(new Address {
                     PostalCode = reader["postal_code"].ToString(),
                     Country = reader["country"].ToString(),
                     City = reader["city"].ToString(),
@@ -127,20 +127,20 @@ namespace DatabaseTool.Query {
             return entityList;
         }
 
-        public static List<EmployeeAdress> SelectEmployeeAdress(DatabaseConnection connection) {
-            List<EmployeeAdress> entityList = new List<EmployeeAdress>();
+        public static List<EmployeeAddress> SelectEmployeeAddress(DatabaseConnection connection) {
+            List<EmployeeAddress> entityList = new List<EmployeeAddress>();
             connection.Connection.Open();
             int bsn;
             MySqlCommand command = connection.Connection.CreateCommand();
-            command.CommandText = "SELECT * FROM employee_adress";
+            command.CommandText = "SELECT * FROM employee_address";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
                 int.TryParse(reader["bsn"].ToString(), out bsn);
-                entityList.Add(new EmployeeAdress {
+                entityList.Add(new EmployeeAddress {
                     Bsn = bsn,
-                    PostalCode = reader["name"].ToString(),
-                    Country = reader["surname"].ToString(),
-                    IsResidence = (reader["is_residence"].ToString() == "1")
+                    PostalCode = reader["postal_code"].ToString(),
+                    Country = reader["country"].ToString(),
+                    IsResidence = reader["is_residence"].ToString() == "1"
                 });
             }
             connection.Connection.Close();

@@ -16,17 +16,22 @@ using DatabaseTool.Entities;
 
 namespace Assignment_1.UserControls.EntityViews {
     /// <summary>
-    /// Interaction logic for AdressListViewer.xaml
+    /// Interaction logic for AddressListViewer.xaml
     /// </summary>
-    public partial class AdressListViewer : UserControl {
-        public AdressListViewer() {
+    public partial class AddressListViewer : UserControl {
+        public AddressListViewer() {
             InitializeComponent();
         }
 
-        public void AddAdresses(List<Adress> adressList) {
-            foreach (Adress adress in adressList) {
-                AdressViewer.Items.Add(adress);
+        public void PopulateList(List<Address> adressList) {
+            this.AddressViewer.Items.Clear();
+            foreach (Address address in adressList) {
+                this.AddressViewer.Items.Add(address);
             }
+        }
+
+        public int SelectedIndex {
+            get { return this.AddressViewer.SelectedIndex; }
         }
     }
 }
