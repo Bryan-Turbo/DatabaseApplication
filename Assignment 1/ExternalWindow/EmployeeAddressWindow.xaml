@@ -21,6 +21,7 @@
         <Button x:Name="AddEmployeeAddress" Content="Associate Address to Employee" HorizontalAlignment="Left" Margin="10,0,0,10" Grid.Row="1" Width="250" Click="AddEmployeeAddress_Click" Height="40" VerticalAlignment="Bottom"/>
         <CheckBox x:Name="ResidenceBox" Content="This address is the employee's Residence" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,70" Grid.Row="1" VerticalAlignment="Bottom" Width="260"/>
         <Button x:Name="DeleteAddress" Content="Delete Address" HorizontalAlignment="Left" Margin="10,185,0,0" Grid.Row="1" VerticalAlignment="Top" Width="250" Height="40" Click="DeleteAddress_Click"/>
+        <Button x:Name="SetResidence" Content="Set Address as Residence" HorizontalAlignment="Right" Margin="0,185,10,0" Grid.Row="1" VerticalAlignment="Top" Width="250" Height="40" Click="SetResidence_Click"/>
 
 
 

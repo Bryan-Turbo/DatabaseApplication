@@ -33,5 +33,22 @@ namespace Assignment_1.UserControls.EntityViews {
         public int SelectedIndex {
             get { return this.AddressViewer.SelectedIndex; }
         }
+
+        public Address SelectedItem {
+            get {
+                var item = (Address) this.AddressViewer.SelectedItem;
+                return item;
+            }
+        }
+
+        public List<Address> Items {
+            get {
+                List<Address> list = new List<Address>();
+                foreach (Address a in this.AddressViewer.Items) {
+                    list.Add(a);
+                }
+                return list;
+            }
+        }
     }
 }

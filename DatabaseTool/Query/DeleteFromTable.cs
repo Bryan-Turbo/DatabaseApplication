@@ -14,5 +14,15 @@ namespace DatabaseTool.Query {
             command.ExecuteNonQuery();
             connection.Connection.Close();
         }
+
+        public static void DeleteEmployeeAddress(DatabaseConnection connection, int employeeBsn, string postalCode, string country) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"DELETE FROM employee_address WHERE bsn = '{employeeBsn}' AND postal_code = '{postalCode}' AND country = '{country}'";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

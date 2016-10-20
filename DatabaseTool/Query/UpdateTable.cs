@@ -23,5 +23,27 @@ namespace DatabaseTool.Query {
             command.ExecuteNonQuery();
             connection.Connection.Close();
         }
+
+        public static void UpdateEmployeeAddress(DatabaseConnection connection, EmployeeAddress oldEmployeeAddress, EmployeeAddress newEmployeeAddress) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+
+            byte bit = 0;
+            if (newEmployeeAddress.IsResidence) { bit = 1; }
+
+            string baseQuery = "UPDATE employee_address ea ";
+
+            string getCurrentEmployee = 
+                $"WHERE ea.bsn = '{oldEmployeeAddress.Bsn}' AND ea.postal_code = '{oldEmployeeAddress.PostalCode}' AND ea.country = '{oldEmployeeAddress.Country}' ";
+            string changeValues =
+                $"SET ea.bsn = '{newEmployeeAddress.Bsn}', ea.postal_code = '{newEmployeeAddress.PostalCode}', ea.country = '{newEmployeeAddress.Country}', ea.is_residence = {bit} ";
+
+            string query = baseQuery + changeValues + getCurrentEmployee;
+            command.CommandText = query;
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

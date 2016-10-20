@@ -46,8 +46,15 @@ namespace Assignment_1.ExternalWindow {
         }
 
         private List<Address> GetAddressesAssociatedWithEmployee(List<EmployeeAddress> eaList, List<Address> aList) {
-            var fresult = eaList.Where(a => a.Bsn == this._employee.Bsn).Select(a => new {a.PostalCode, a.Country });
-            List<Address> result = aList.Where(a => fresult.Contains(new {a.PostalCode, a.Country})).ToList();
+            var fresult = 
+                eaList
+                .Where(a => a.Bsn == this._employee.Bsn)
+                .Select(a => new {a.PostalCode, a.Country });
+
+            List<Address> result = 
+                aList
+                .Where(a => fresult.Contains(new {a.PostalCode, a.Country}))
+                .ToList();
             return result;
         }
 
@@ -56,6 +63,13 @@ namespace Assignment_1.ExternalWindow {
                 MessageBox.Show("Please select an address","NO ADDRESS SELECTED",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
+            List<EmployeeAddress> checklist = EntityContentSelector.SelectEmployeeAddress(this._connection);
+            bool containsResidence = checklist.Where(ea => ea.Bsn == this._employee.Bsn).Select(r => r.IsResidence).Contains(true);
+            if (containsResidence && ResidenceBox.IsChecked == true) {
+                MessageBox.Show("This employee already has a residence", "Residence Already Exists", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             InsertIntoTable.InsertEmployeeAddress(this._connection, _employee.Bsn,
                 _adressList.ElementAt(AddressBox.SelectedIndex).PostalCode,
                 _adressList.ElementAt(AddressBox.SelectedIndex).Country, ResidenceBox.IsChecked == true);
@@ -68,7 +82,44 @@ namespace Assignment_1.ExternalWindow {
         private void DeleteAddress_Click(object sender, RoutedEventArgs e) {
             if (AddressListViewer.SelectedIndex < 0) {
                 MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            DeleteFromTable.DeleteEmployeeAddress(this._connection, this._employee.Bsn, AddressListViewer.SelectedItem.PostalCode, AddressListViewer.SelectedItem.Country);
+        }
+
+        private void SetResidence_Click(object sender, RoutedEventArgs e) {
+            if (AddressListViewer.SelectedIndex < 0) {
+                MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            var list = AddressListViewer.Items;
+            foreach (Address a in list) {
+                UpdateTable.UpdateEmployeeAddress(this._connection,
+                new EmployeeAddress {
+                    Bsn = _employee.Bsn,
+                    PostalCode = a.PostalCode,
+                    Country = a.Country
+                },
+                new EmployeeAddress {
+                    Bsn = _employee.Bsn,
+                    PostalCode = a.PostalCode,
+                    Country = a.Country,
+                    IsResidence = false
+                });
+            }
+
+            UpdateTable.UpdateEmployeeAddress(this._connection,
+                new EmployeeAddress {
+                    Bsn = _employee.Bsn,
+                    PostalCode = AddressListViewer.SelectedItem.PostalCode,
+                    Country = AddressListViewer.SelectedItem.Country
+                }, 
+                new EmployeeAddress {
+                    Bsn = _employee.Bsn,
+                    PostalCode = AddressListViewer.SelectedItem.PostalCode,
+                    Country = AddressListViewer.SelectedItem.Country,
+                    IsResidence = true
+                });
         }
     }
 }
