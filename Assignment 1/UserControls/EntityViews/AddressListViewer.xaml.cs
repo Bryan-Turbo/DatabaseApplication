@@ -30,8 +30,8 @@ namespace Assignment_1.UserControls.EntityViews {
             }
         }
 
-        public int SelectedIndex {
-            get { return this.AddressViewer.SelectedIndex; }
+        public void RemoveItem(Address item) {
+            this.AddressViewer.Items.Remove(item);
         }
 
         public Address SelectedItem {

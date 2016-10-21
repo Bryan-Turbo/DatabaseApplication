@@ -24,25 +24,26 @@ namespace Assignment_1.ExternalWindow {
         private readonly DatabaseConnection _connection;
 
         private List<EmployeeAddress> _employeeAddressList;
-        private List<Address> _adressList;
+        private List<Address> _addressList;
         public EmployeeAddressWindow(Employee employee, DatabaseConnection connection) {
             InitializeComponent();
             this._employee = employee;
             this._connection = connection;
             GetData();
 
-            AddressListViewer.PopulateList(GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._adressList));
+            AddressListViewer.PopulateList(GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList));
 
             this.Header.Content = $"Employee {this._employee.Name} {this._employee.Surname} - Addresses";
 
-            foreach (Address a in _adressList) {
+            foreach (Address a in _addressList) {
                 AddressBox.Items.Add($"{a.PostalCode}, {a.Street} {a.HouseNumber}, {a.Country}");
             }
+            ShowResidence();
         }
 
         private void GetData() {
             _employeeAddressList = EntityContentSelector.SelectEmployeeAddress(this._connection);
-            _adressList = EntityContentSelector.SelectAddress(this._connection);
+            _addressList = EntityContentSelector.SelectAddress(this._connection);
         }
 
         private List<Address> GetAddressesAssociatedWithEmployee(List<EmployeeAddress> eaList, List<Address> aList) {
@@ -71,24 +72,27 @@ namespace Assignment_1.ExternalWindow {
             }
 
             InsertIntoTable.InsertEmployeeAddress(this._connection, _employee.Bsn,
-                _adressList.ElementAt(AddressBox.SelectedIndex).PostalCode,
-                _adressList.ElementAt(AddressBox.SelectedIndex).Country, ResidenceBox.IsChecked == true);
+                _addressList.ElementAt(AddressBox.SelectedIndex).PostalCode,
+                _addressList.ElementAt(AddressBox.SelectedIndex).Country, ResidenceBox.IsChecked == true);
 
             GetData();
-            var list = GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._adressList);
+            var list = GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList);
             AddressListViewer.PopulateList(list);
+            ShowResidence();
         }
 
         private void DeleteAddress_Click(object sender, RoutedEventArgs e) {
-            if (AddressListViewer.SelectedIndex < 0) {
+            if (AddressListViewer.SelectedItem == null) {
                 MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             DeleteFromTable.DeleteEmployeeAddress(this._connection, this._employee.Bsn, AddressListViewer.SelectedItem.PostalCode, AddressListViewer.SelectedItem.Country);
+            AddressListViewer.RemoveItem(AddressListViewer.SelectedItem);
+            ShowResidence();
         }
 
         private void SetResidence_Click(object sender, RoutedEventArgs e) {
-            if (AddressListViewer.SelectedIndex < 0) {
+            if (AddressListViewer.SelectedItem == null) {
                 MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -120,6 +124,30 @@ namespace Assignment_1.ExternalWindow {
                     Country = AddressListViewer.SelectedItem.Country,
                     IsResidence = true
                 });
+            ShowResidence();
+        }
+
+        private void ShowResidence() {
+            GetData();
+            var residenceList =
+                this._employeeAddressList.Where(b => b.Bsn == this._employee.Bsn && b.IsResidence).Select(a => new {a.PostalCode, a.Country}).ToList();
+
+            if (residenceList.Count < 1) {
+                this.CurrentResidence.Content = $"{_employee.Name} {_employee.Surname} does not have a residence";
+                return;
+            }
+
+            var residence =
+                _addressList.Where(a => a.PostalCode == residenceList[0].PostalCode && a.Country == residenceList[0].Country)
+                    .Select(p => new {p.PostalCode, p.Street, p.HouseNumber})
+                    .ToList()[0];
+
+            if (residence == null)
+                return;
+
+            this.CurrentResidence.Content = 
+                $"Current residence of {_employee.Name} {_employee.Surname}: {residence.PostalCode}, {residence.Street} {residence.HouseNumber}";
+                
         }
     }
 }
