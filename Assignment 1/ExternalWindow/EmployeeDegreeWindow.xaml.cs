@@ -37,6 +37,8 @@ namespace Assignment_1.ExternalWindow {
             foreach (Degree d in this._degreeList) {
                 DegreeBox.Items.Add($"{d.Course}, {d.DegreeLevel}");
             }
+
+            this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}";
         }
 
         private void GetData() {

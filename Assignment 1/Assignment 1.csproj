@@ -69,6 +69,9 @@
     <Compile Include="ExternalWindow\EmployeeAdder.xaml.cs">
       <DependentUpon>EmployeeAdder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExternalWindow\EmployeePositionWindow.xaml.cs">
+      <DependentUpon>EmployeePositionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ApplicationWindows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,9 @@
     <Compile Include="UserControls\EntityViews\EmployeeViewer.xaml.cs">
       <DependentUpon>EmployeeViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\EntityViews\PositionViewer.xaml.cs">
+      <DependentUpon>PositionViewer.xaml</DependentUpon>
+    </Compile>
     <Page Include="DatabaseUserInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExternalWindow\EmployeeEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\EmployeePositionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\EntityViews\EmployeeViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EntityViews\PositionViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

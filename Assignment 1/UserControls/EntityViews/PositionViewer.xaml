@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Assignment_1.UserControls.EntityViews.PositionViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Assignment_1.UserControls.EntityViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Position Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#EEEEEE"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#EEEEEE"/>
+        <Label Grid.Row="0" Grid.Column="2" Content="Hourly Fee" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#EEEEEE"/>
+
+        <ListBox x:Name="PositionListViewer" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" ItemsSource="{Binding MyItems}" Grid.ColumnSpan="3"
+                 Grid.Column="0" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding PositionName}"/>
+                        <Label Grid.Column="1" Content="{Binding Description}"/>
+                        <Label Grid.Column="2" Content="{Binding HourlyFee}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</UserControl>

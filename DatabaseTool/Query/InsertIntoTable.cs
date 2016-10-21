@@ -35,5 +35,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void InsertEmployeePosition(DatabaseConnection connection, int bsn, string positionName) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"INSERT INTO employee_position(bsn, position_name) VALUES('{bsn.ToString("000000000")}', '{positionName}')";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

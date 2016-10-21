@@ -165,7 +165,7 @@ namespace DatabaseTool.Query {
             return entityList;
         }
 
-        public static List<EmployeeProject> SelectEmployeeAssociation(DatabaseConnection connection) {
+        public static List<EmployeeProject> SelectEmployeeProject(DatabaseConnection connection) {
             List<EmployeeProject> entityList = new List<EmployeeProject>();
             connection.Connection.Open();
             int bsn, projectId, workingHours;

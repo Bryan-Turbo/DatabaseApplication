@@ -33,7 +33,7 @@ namespace Assignment_1.ExternalWindow {
 
             AddressListViewer.PopulateList(GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList));
 
-            this.Header.Content = $"Employee {this._employee.Name} {this._employee.Surname} - Addresses";
+            this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}";
 
             foreach (Address a in _addressList) {
                 AddressBox.Items.Add($"{a.PostalCode}, {a.Street} {a.HouseNumber}, {a.Country}");

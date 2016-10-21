@@ -26,7 +26,7 @@ namespace Assignment_1.ExternalWindow {
         public EmployeeEditor(Employee employee, DatabaseConnection connection) {
             InitializeComponent();
             _employee = employee;
-            EmployeeBsn.Content = $"Employee with BSN: { _employee.Bsn.ToString("000000000")}";
+            this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}, BSN: {this._employee.Bsn}";
             _connection = connection;//new DatabaseConnection("localhost", "assignment1", "root", "");
             _headquartersList = EntityContentSelector.SelectHeadquarters(this._connection);
             foreach (Headquarters hq in _headquartersList) {
