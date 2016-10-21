@@ -76,7 +76,7 @@ namespace DatabaseTool.Query {
             var reader = command.ExecuteReader();
             while (reader.Read()) {
                 entityList.Add(new Degree {
-                    Course = reader["degree"].ToString(),
+                    Course = reader["course"].ToString(),
                     DegreeLevel = reader["degree_level"].ToString(),
                     School = reader["school"].ToString()
                 });
@@ -174,7 +174,7 @@ namespace DatabaseTool.Query {
             connection.Connection.Open();
             int bsn;
             MySqlCommand command = connection.Connection.CreateCommand();
-            command.CommandText = "SELECT * FROM employee";
+            command.CommandText = "SELECT * FROM employee_degree";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
                 int.TryParse(reader["bsn"].ToString(), out bsn);

@@ -24,5 +24,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void DeleteEmployeeDegree(DatabaseConnection connection, int employeeBsn, string course) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"DELETE FROM employee_degree WHERE bsn = '{employeeBsn.ToString("000000000")}' AND course = '{course}'";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

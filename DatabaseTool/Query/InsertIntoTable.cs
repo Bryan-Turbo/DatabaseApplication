@@ -25,5 +25,15 @@ namespace DatabaseTool.Query {
             command.ExecuteNonQuery();
             connection.Connection.Close();
         }
+
+        public static void InsertEmployeeDegree(DatabaseConnection connection, int bsn, string course) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"INSERT INTO employee_degree(bsn, course) VALUES('{bsn.ToString("000000000")}', '{course}')";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

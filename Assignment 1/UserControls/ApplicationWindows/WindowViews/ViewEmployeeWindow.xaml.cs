@@ -55,5 +55,10 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
             EmployeeAddressWindow window = new EmployeeAddressWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
             window.ShowDialog();
         }
+
+        private void EmployeeEducation_Click(object sender, RoutedEventArgs e) {
+            EmployeeDegreeWindow window = new EmployeeDegreeWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+            window.ShowDialog();
+        }
     }
 }

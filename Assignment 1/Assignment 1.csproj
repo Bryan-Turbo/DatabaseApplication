@@ -60,6 +60,9 @@
     <Compile Include="ExternalWindow\EmployeeAddressWindow.xaml.cs">
       <DependentUpon>EmployeeAddressWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExternalWindow\EmployeeDegreeWindow.xaml.cs">
+      <DependentUpon>EmployeeDegreeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExternalWindow\EmployeeEditor.xaml.cs">
       <DependentUpon>EmployeeEditor.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
     <Compile Include="UserControls\EntityViews\AddressListViewer.xaml.cs">
       <DependentUpon>AddressListViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\EntityViews\DegreeViewer.xaml.cs">
+      <DependentUpon>DegreeViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EntityViews\EmployeeViewer.xaml.cs">
       <DependentUpon>EmployeeViewer.xaml</DependentUpon>
     </Compile>
@@ -83,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExternalWindow\EmployeeAddressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\EmployeeDegreeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\EntityViews\AddressListViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EntityViews\DegreeViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
