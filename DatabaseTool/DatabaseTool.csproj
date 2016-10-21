@@ -54,8 +54,9 @@
     <Compile Include="Entities\Degree.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\EmployeeAddress.cs" />
-    <Compile Include="Entities\EmployeeAssociation.cs" />
     <Compile Include="Entities\EmployeeDegree.cs" />
+    <Compile Include="Entities\EmployeePosition.cs" />
+    <Compile Include="Entities\EmployeeProject.cs" />
     <Compile Include="Entities\Headquarters.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Position.cs" />

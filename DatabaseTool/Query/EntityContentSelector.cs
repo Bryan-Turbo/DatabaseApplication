@@ -147,18 +147,36 @@ namespace DatabaseTool.Query {
             return entityList;
         }
 
-        public static List<EmployeeAssociation> SelectEmployeeAssociation(DatabaseConnection connection) {
-            List<EmployeeAssociation> entityList = new List<EmployeeAssociation>();
+        public static List<EmployeePosition> SelectEmployeePosition(DatabaseConnection connection) {
+            List<EmployeePosition> entityList = new List<EmployeePosition>();
+            connection.Connection.Open();
+            int bsn;
+            MySqlCommand command = connection.Connection.CreateCommand();
+            command.CommandText = "SELECT * FROM employee_position";
+            var reader = command.ExecuteReader();
+            while (reader.Read()) {
+                int.TryParse(reader["bsn"].ToString(), out bsn);
+                entityList.Add(new EmployeePosition {
+                    Bsn = bsn,
+                    PositionName = reader["position_name"].ToString()
+                });
+            }
+            connection.Connection.Close();
+            return entityList;
+        }
+
+        public static List<EmployeeProject> SelectEmployeeAssociation(DatabaseConnection connection) {
+            List<EmployeeProject> entityList = new List<EmployeeProject>();
             connection.Connection.Open();
             int bsn, projectId, workingHours;
             MySqlCommand command = connection.Connection.CreateCommand();
-            command.CommandText = "SELECT * FROM employee_association";
+            command.CommandText = "SELECT * FROM employee_project";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
                 int.TryParse(reader["bsn"].ToString(), out bsn);
                 int.TryParse(reader["project_id"].ToString(), out projectId);
                 int.TryParse(reader["working_hours"].ToString(), out workingHours);
-                entityList.Add(new EmployeeAssociation {
+                entityList.Add(new EmployeeProject {
                     Bsn = bsn,
                     PositionName = reader["position_name"].ToString(),
                     ProjectId = projectId,

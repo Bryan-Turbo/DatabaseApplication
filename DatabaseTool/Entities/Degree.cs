@@ -9,8 +9,5 @@ namespace DatabaseTool.Entities {
         public string Course { get; set; }
         public string School { get; set; }
         public string DegreeLevel { get; set; }
-        public List<string> ReturnValues() {
-            return new List<string> { Course, School, DegreeLevel};
-        }
     }
 }

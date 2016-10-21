@@ -10,9 +10,5 @@ namespace DatabaseTool.Entities {
         public int ProjectId { get; set; }
         public int TotalHours { get; set; }
         public string BuildingName { get; set; }
-
-        public List<string> ReturnValues() {
-            return new List<string> {this.Budget.ToString(), this.ProjectId.ToString(), this.TotalHours.ToString(), this.BuildingName};
-        }
     }
 }

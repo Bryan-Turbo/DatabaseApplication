@@ -10,8 +10,5 @@ namespace DatabaseTool.Entities {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string MainBuildingName { get; set; }
-        public List<string> ReturnValues() {
-            return new List<string> { Bsn.ToString(), Name, Surname, MainBuildingName};
-        }
     }
 }

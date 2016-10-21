@@ -10,8 +10,5 @@ namespace DatabaseTool.Entities {
         public string Country { get; set; }
         public string PostalCode { get; set; }
         public bool IsResidence { get; set; }
-        public List<string> ReturnValues() {
-            return new List<string> { Bsn.ToString(), Country, PostalCode, IsResidence.ToString()};
-        }
     }
 }

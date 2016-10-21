@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DatabaseTool.Entities {
-    public interface IEntity {
-        
+    public class EmployeePosition : IEntity{
+        public int Bsn { get; set; }
+        public string PositionName { get; set; }
     }
 }

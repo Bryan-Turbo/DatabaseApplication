@@ -11,8 +11,5 @@ namespace DatabaseTool.Entities {
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
-        public List<string> ReturnValues() {
-            return new List<string> { PostalCode, Country, City, Street, HouseNumber.ToString()};
-        }
     }
 }

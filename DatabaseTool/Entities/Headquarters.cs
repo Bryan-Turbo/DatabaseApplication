@@ -11,8 +11,5 @@ namespace DatabaseTool.Entities {
         public int Rooms { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
-        public List<string> ReturnValues() {
-            return new List<string> { BuildingName, Rent.ToString(), Rooms.ToString(), Country, PostalCode};
-        }
     }
 }
