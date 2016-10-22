@@ -72,6 +72,15 @@
     <Compile Include="ExternalWindow\EmployeeWindows\EmployeePositionWindow.xaml.cs">
       <DependentUpon>EmployeePositionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExternalWindow\ProjectWindows\EmployeeProjectWindow.xaml.cs">
+      <DependentUpon>EmployeeProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalWindow\ProjectWindows\ProjectAddWindow.xaml.cs">
+      <DependentUpon>ProjectAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalWindow\ProjectWindows\ProjectEditWindow.xaml.cs">
+      <DependentUpon>ProjectEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ApplicationWindows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +122,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExternalWindow\EmployeeWindows\EmployeePositionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\ProjectWindows\EmployeeProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\ProjectWindows\ProjectAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalWindow\ProjectWindows\ProjectEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,9 +222,7 @@
       <Name>DatabaseTool</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ExternalWindow\ProjectWindows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

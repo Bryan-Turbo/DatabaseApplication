@@ -45,5 +45,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void UpdateProject(DatabaseConnection connection, int oldProjectId, float newBudget, float newTotalHours, string newBuildingName) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"UPDATE project p SET p.budget = '{newBudget}', p.total_hours = '{newTotalHours}', p.building_name = '{newBuildingName}' WHERE p.project_id = '{oldProjectId}'";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

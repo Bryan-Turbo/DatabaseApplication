@@ -45,5 +45,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void InsertProject(DatabaseConnection connection, float budget, float totalHours, string buildingName) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"INSERT INTO project(budget, total_hours, building_name) VALUES('{budget}', '{totalHours}', '{buildingName}')";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

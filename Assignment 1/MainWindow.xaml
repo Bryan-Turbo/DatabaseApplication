@@ -19,6 +19,7 @@
         
         
         <!--<windowViews:AddEmployeeWindow x:Name="AddEmployeeWindow" Visibility="Visible" Grid.Row="1"/>-->
-        <windowViews:ViewEmployeeWindow x:Name="ViewEmployeesWindow" Visibility="Visible" Grid.Row="1"/>
+        <windowViews:ViewEmployeeWindow x:Name="ViewEmployeesWindow" Visibility="Hidden" Grid.Row="1"/>
+        <windowViews:ViewProjectWindow x:Name="ViewProjectWindow" Visibility="Visible" Grid.Row="1" />
     </Grid>
 </Window>
