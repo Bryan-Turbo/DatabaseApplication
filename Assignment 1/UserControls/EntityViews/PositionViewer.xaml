@@ -32,7 +32,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="{Binding PositionName}"/>
                         <Label Grid.Column="1" Content="{Binding Description}"/>
-                        <Label Grid.Column="2" Content="{Binding HourlyFee}"/>
+                        <Label Grid.Column="2" Content="{Binding HourlyFee}" HorizontalContentAlignment="Center" ContentStringFormat="€ 0.00"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
