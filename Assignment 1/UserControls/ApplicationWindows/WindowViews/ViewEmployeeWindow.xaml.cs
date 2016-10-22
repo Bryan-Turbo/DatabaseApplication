@@ -15,8 +15,11 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         private DispatcherTimer timer;
         private List<Button> _buttonList;
 
+        public string Title { get; }
         public ViewEmployeeWindow() {
             InitializeComponent();
+
+            this.Title = "Employee Viewer";
 
             _buttonList = new List<Button> {
                 this.EditButton,

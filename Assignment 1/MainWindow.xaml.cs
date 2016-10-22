@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Assignment_1.UserControls.ApplicationWindows;
+using Assignment_1.UserControls.ApplicationWindows.WindowViews;
 using DatabaseTool.Entities;
 using DatabaseTool.Connector;
 using DatabaseTool.Query;
@@ -26,7 +27,16 @@ namespace Assignment_1 {
         private DatabaseConnection _connection;
         public MainWindow() {
             InitializeComponent();
+
+            CheckActiveWindow();
+
             _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
+        }
+
+        private void CheckActiveWindow() {
+            if (ViewEmployeesWindow.Visibility == Visibility.Visible) {
+                this.Header.Content = this.ViewEmployeesWindow.Title;
+            }
         }
     }
 }
