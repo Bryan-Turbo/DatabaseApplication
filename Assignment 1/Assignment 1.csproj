@@ -78,6 +78,9 @@
     <Compile Include="UserControls\ApplicationWindows\WindowViews\ViewEmployeeWindow.xaml.cs">
       <DependentUpon>ViewEmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ApplicationWindows\WindowViews\ViewProjectWindow.xaml.cs">
+      <DependentUpon>ViewProjectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EntityViews\AddressListViewer.xaml.cs">
       <DependentUpon>AddressListViewer.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,9 @@
     </Compile>
     <Compile Include="UserControls\EntityViews\PositionViewer.xaml.cs">
       <DependentUpon>PositionViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EntityViews\ProjectViewer.xaml.cs">
+      <DependentUpon>ProjectViewer.xaml</DependentUpon>
     </Compile>
     <Page Include="DatabaseUserInterface.xaml">
       <SubType>Designer</SubType>
@@ -137,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ApplicationWindows\WindowViews\ViewProjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\EntityViews\AddressListViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\EntityViews\PositionViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EntityViews\ProjectViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,7 +201,9 @@
       <Name>DatabaseTool</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ExternalWindow\ProjectWindows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
