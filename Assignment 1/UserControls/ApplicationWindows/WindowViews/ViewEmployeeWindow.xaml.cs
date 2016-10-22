@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using Assignment_1.ExternalWindow;
+using Assignment_1.ExternalWindow.EmployeeWindows;
 using DatabaseTool.Query;
 using UserControl = System.Windows.Controls.UserControl;
 

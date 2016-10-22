@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_1.ExternalWindow"
-        xmlns:EntityViews="clr-namespace:Assignment_1.UserControls.EntityViews" x:Class="Assignment_1.ExternalWindow.EmployeeDegreeWindow"
+        xmlns:EntityViews="clr-namespace:Assignment_1.UserControls.EntityViews" x:Class="Assignment_1.ExternalWindow.EmployeeWindows.EmployeeDegreeWindow"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Title="EmployeeDegreeWindow" Height="500" Width="800">

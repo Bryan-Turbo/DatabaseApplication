@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DatabaseTool.Connector;
 using DatabaseTool.Entities;
 using DatabaseTool.Query;
 
-namespace Assignment_1.ExternalWindow {
+namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// <summary>
     /// Interaction logic for EmployeeDegreeWindow.xaml
     /// </summary>
@@ -32,18 +22,18 @@ namespace Assignment_1.ExternalWindow {
             this._connection = connection;
 
             this.GetData();
-            this.DegreeViewer.PopulateList(GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
+            this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
 
             foreach (Degree d in this._degreeList) {
-                DegreeBox.Items.Add($"{d.Course}, {d.DegreeLevel}");
+                this.DegreeBox.Items.Add($"{d.Course}, {d.DegreeLevel}");
             }
 
             this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}";
         }
 
         private void GetData() {
-            _degreeList = EntityContentSelector.SelectDegree(this._connection);
-            _employeeDegreeList = EntityContentSelector.SelectEmployeeDegree(this._connection).Where(e => e.Bsn == this._employee.Bsn).ToList();
+            this._degreeList = EntityContentSelector.SelectDegree(this._connection);
+            this._employeeDegreeList = EntityContentSelector.SelectEmployeeDegree(this._connection).Where(e => e.Bsn == this._employee.Bsn).ToList();
         }
 
         private List<Degree> GetDegreesOfEmployee(List<EmployeeDegree> eDList, List<Degree> dList) {
@@ -55,23 +45,23 @@ namespace Assignment_1.ExternalWindow {
         }
 
         private void AddDegree_Click(object sender, RoutedEventArgs e) {
-            if (DegreeBox.SelectedIndex < 0) {
+            if (this.DegreeBox.SelectedIndex < 0) {
                 MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[DegreeBox.SelectedIndex].Course);
+            InsertIntoTable.InsertEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[this.DegreeBox.SelectedIndex].Course);
             this.GetData();
-            this.DegreeViewer.PopulateList(GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
+            this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
         }
 
         private void RemoveDegree_Click(object sender, RoutedEventArgs e) {
-            if (DegreeBox.SelectedIndex < 0) {
+            if (this.DegreeBox.SelectedIndex < 0) {
                 MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[DegreeBox.SelectedIndex].Course);
+            DeleteFromTable.DeleteEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[this.DegreeBox.SelectedIndex].Course);
             this.GetData();
-            this.DegreeViewer.PopulateList(GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
+            this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
         }
     }
 }

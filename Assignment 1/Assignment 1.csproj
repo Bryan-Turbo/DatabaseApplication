@@ -57,19 +57,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ExternalWindow\EmployeeAddressWindow.xaml.cs">
+    <Compile Include="ExternalWindow\EmployeeWindows\EmployeeAddressWindow.xaml.cs">
       <DependentUpon>EmployeeAddressWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExternalWindow\EmployeeDegreeWindow.xaml.cs">
+    <Compile Include="ExternalWindow\EmployeeWindows\EmployeeDegreeWindow.xaml.cs">
       <DependentUpon>EmployeeDegreeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExternalWindow\EmployeeEditor.xaml.cs">
+    <Compile Include="ExternalWindow\EmployeeWindows\EmployeeEditor.xaml.cs">
       <DependentUpon>EmployeeEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExternalWindow\EmployeeAdder.xaml.cs">
+    <Compile Include="ExternalWindow\EmployeeWindows\EmployeeAdder.xaml.cs">
       <DependentUpon>EmployeeAdder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExternalWindow\EmployeePositionWindow.xaml.cs">
+    <Compile Include="ExternalWindow\EmployeeWindows\EmployeePositionWindow.xaml.cs">
       <DependentUpon>EmployeePositionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ApplicationWindows\MainWindow.xaml.cs">
@@ -94,19 +94,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExternalWindow\EmployeeAddressWindow.xaml">
+    <Page Include="ExternalWindow\EmployeeWindows\EmployeeAddressWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExternalWindow\EmployeeDegreeWindow.xaml">
+    <Page Include="ExternalWindow\EmployeeWindows\EmployeeDegreeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExternalWindow\EmployeeEditor.xaml">
+    <Page Include="ExternalWindow\EmployeeWindows\EmployeeEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExternalWindow\EmployeePositionWindow.xaml">
+    <Page Include="ExternalWindow\EmployeeWindows\EmployeePositionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,7 +125,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ExternalWindow\EmployeeAdder.xaml">
+    <Page Include="ExternalWindow\EmployeeWindows\EmployeeAdder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

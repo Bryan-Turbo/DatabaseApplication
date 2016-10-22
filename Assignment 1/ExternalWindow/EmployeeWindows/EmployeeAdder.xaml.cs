@@ -4,7 +4,7 @@ using DatabaseTool.Connector;
 using DatabaseTool.Entities;
 using DatabaseTool.Query;
 
-namespace Assignment_1.ExternalWindow {
+namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// <summary>
     /// Interaction logic for AddEmployeeWindow.xaml
     /// </summary>

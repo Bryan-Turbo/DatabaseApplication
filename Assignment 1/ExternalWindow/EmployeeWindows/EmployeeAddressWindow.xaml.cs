@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DatabaseTool.Connector;
 using DatabaseTool.Entities;
 using DatabaseTool.Query;
 
-namespace Assignment_1.ExternalWindow {
+namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// <summary>
     /// Interaction logic for EmployeeAddressWindow.xaml
     /// </summary>
@@ -29,21 +19,21 @@ namespace Assignment_1.ExternalWindow {
             InitializeComponent();
             this._employee = employee;
             this._connection = connection;
-            GetData();
+            this.GetData();
 
-            AddressListViewer.PopulateList(GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList));
+            this.AddressListViewer.PopulateList(this.GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList));
 
             this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}";
 
-            foreach (Address a in _addressList) {
-                AddressBox.Items.Add($"{a.PostalCode}, {a.Street} {a.HouseNumber}, {a.Country}");
+            foreach (Address a in this._addressList) {
+                this.AddressBox.Items.Add($"{a.PostalCode}, {a.Street} {a.HouseNumber}, {a.Country}");
             }
-            ShowResidence();
+            this.ShowResidence();
         }
 
         private void GetData() {
-            _employeeAddressList = EntityContentSelector.SelectEmployeeAddress(this._connection);
-            _addressList = EntityContentSelector.SelectAddress(this._connection);
+            this._employeeAddressList = EntityContentSelector.SelectEmployeeAddress(this._connection);
+            this._addressList = EntityContentSelector.SelectAddress(this._connection);
         }
 
         private List<Address> GetAddressesAssociatedWithEmployee(List<EmployeeAddress> eaList, List<Address> aList) {
@@ -60,52 +50,52 @@ namespace Assignment_1.ExternalWindow {
         }
 
         private void AddEmployeeAddress_Click(object sender, RoutedEventArgs e) {
-            if (AddressBox.SelectedIndex < 0) {
+            if (this.AddressBox.SelectedIndex < 0) {
                 MessageBox.Show("Please select an address","NO ADDRESS SELECTED",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
             List<EmployeeAddress> checklist = EntityContentSelector.SelectEmployeeAddress(this._connection);
             bool containsResidence = checklist.Where(ea => ea.Bsn == this._employee.Bsn).Select(r => r.IsResidence).Contains(true);
-            if (containsResidence && ResidenceBox.IsChecked == true) {
+            if (containsResidence && this.ResidenceBox.IsChecked == true) {
                 MessageBox.Show("This employee already has a residence", "Residence Already Exists", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            InsertIntoTable.InsertEmployeeAddress(this._connection, _employee.Bsn,
-                _addressList.ElementAt(AddressBox.SelectedIndex).PostalCode,
-                _addressList.ElementAt(AddressBox.SelectedIndex).Country, ResidenceBox.IsChecked == true);
+            InsertIntoTable.InsertEmployeeAddress(this._connection, this._employee.Bsn,
+                this._addressList.ElementAt(this.AddressBox.SelectedIndex).PostalCode,
+                this._addressList.ElementAt(this.AddressBox.SelectedIndex).Country, this.ResidenceBox.IsChecked == true);
 
-            GetData();
-            var list = GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList);
-            AddressListViewer.PopulateList(list);
-            ShowResidence();
+            this.GetData();
+            var list = this.GetAddressesAssociatedWithEmployee(this._employeeAddressList, this._addressList);
+            this.AddressListViewer.PopulateList(list);
+            this.ShowResidence();
         }
 
         private void DeleteAddress_Click(object sender, RoutedEventArgs e) {
-            if (AddressListViewer.SelectedItem == null) {
+            if (this.AddressListViewer.SelectedItem == null) {
                 MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeeAddress(this._connection, this._employee.Bsn, AddressListViewer.SelectedItem.PostalCode, AddressListViewer.SelectedItem.Country);
-            AddressListViewer.RemoveItem(AddressListViewer.SelectedItem);
-            ShowResidence();
+            DeleteFromTable.DeleteEmployeeAddress(this._connection, this._employee.Bsn, this.AddressListViewer.SelectedItem.PostalCode, this.AddressListViewer.SelectedItem.Country);
+            this.AddressListViewer.RemoveItem(this.AddressListViewer.SelectedItem);
+            this.ShowResidence();
         }
 
         private void SetResidence_Click(object sender, RoutedEventArgs e) {
-            if (AddressListViewer.SelectedItem == null) {
+            if (this.AddressListViewer.SelectedItem == null) {
                 MessageBox.Show("Please select an address", "No Address Selected", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            var list = AddressListViewer.Items;
+            var list = this.AddressListViewer.Items;
             foreach (Address a in list) {
                 UpdateTable.UpdateEmployeeAddress(this._connection,
                 new EmployeeAddress {
-                    Bsn = _employee.Bsn,
+                    Bsn = this._employee.Bsn,
                     PostalCode = a.PostalCode,
                     Country = a.Country
                 },
                 new EmployeeAddress {
-                    Bsn = _employee.Bsn,
+                    Bsn = this._employee.Bsn,
                     PostalCode = a.PostalCode,
                     Country = a.Country,
                     IsResidence = false
@@ -114,31 +104,31 @@ namespace Assignment_1.ExternalWindow {
 
             UpdateTable.UpdateEmployeeAddress(this._connection,
                 new EmployeeAddress {
-                    Bsn = _employee.Bsn,
-                    PostalCode = AddressListViewer.SelectedItem.PostalCode,
-                    Country = AddressListViewer.SelectedItem.Country
+                    Bsn = this._employee.Bsn,
+                    PostalCode = this.AddressListViewer.SelectedItem.PostalCode,
+                    Country = this.AddressListViewer.SelectedItem.Country
                 }, 
                 new EmployeeAddress {
-                    Bsn = _employee.Bsn,
-                    PostalCode = AddressListViewer.SelectedItem.PostalCode,
-                    Country = AddressListViewer.SelectedItem.Country,
+                    Bsn = this._employee.Bsn,
+                    PostalCode = this.AddressListViewer.SelectedItem.PostalCode,
+                    Country = this.AddressListViewer.SelectedItem.Country,
                     IsResidence = true
                 });
-            ShowResidence();
+            this.ShowResidence();
         }
 
         private void ShowResidence() {
-            GetData();
+            this.GetData();
             var residenceList =
                 this._employeeAddressList.Where(b => b.Bsn == this._employee.Bsn && b.IsResidence).Select(a => new {a.PostalCode, a.Country}).ToList();
 
             if (residenceList.Count < 1) {
-                this.CurrentResidence.Content = $"{_employee.Name} {_employee.Surname} does not have a residence";
+                this.CurrentResidence.Content = $"{this._employee.Name} {this._employee.Surname} does not have a residence";
                 return;
             }
 
             var residence =
-                _addressList.Where(a => a.PostalCode == residenceList[0].PostalCode && a.Country == residenceList[0].Country)
+                this._addressList.Where(a => a.PostalCode == residenceList[0].PostalCode && a.Country == residenceList[0].Country)
                     .Select(p => new {p.PostalCode, p.Street, p.HouseNumber})
                     .ToList()[0];
 
@@ -146,7 +136,7 @@ namespace Assignment_1.ExternalWindow {
                 return;
 
             this.CurrentResidence.Content = 
-                $"Current residence of {_employee.Name} {_employee.Surname}: {residence.PostalCode}, {residence.Street} {residence.HouseNumber}";
+                $"Current residence of {this._employee.Name} {this._employee.Surname}: {residence.PostalCode}, {residence.Street} {residence.HouseNumber}";
                 
         }
     }

@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DatabaseTool.Connector;
 using DatabaseTool.Entities;
 using DatabaseTool.Query;
 
-namespace Assignment_1.ExternalWindow {
+namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// <summary>
     /// Interaction logic for EmployeePositionWindow.xaml
     /// </summary>
@@ -30,10 +20,10 @@ namespace Assignment_1.ExternalWindow {
             this._connection = connection;
             this._employee = employee;
 
-            PositionListViewer.PopulateList(GetPositionsOfEmployee());
+            this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
 
             foreach (Position p in this._positionList) {
-                PositionBox.Items.Add(p.PositionName);
+                this.PositionBox.Items.Add(p.PositionName);
             }
 
             this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}";
@@ -45,7 +35,7 @@ namespace Assignment_1.ExternalWindow {
         }
 
         private List<Position> GetPositionsOfEmployee() {
-            GetData();
+            this.GetData();
             var fresult = this._employeePositionList.Where(e => e.Bsn == this._employee.Bsn).Select(n => n.PositionName);
 
             List<Position> result = this._positionList.Where(p => fresult.Contains(p.PositionName)).ToList();
@@ -54,21 +44,21 @@ namespace Assignment_1.ExternalWindow {
         }
 
         private void AddPosition_Click(object sender, RoutedEventArgs e) {
-            if (PositionBox.SelectedIndex < 0) {
+            if (this.PositionBox.SelectedIndex < 0) {
                 MessageBox.Show("Please select a position","NO POSITION SELECTED",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployeePosition(this._connection, this._employee.Bsn, this._positionList[PositionBox.SelectedIndex].PositionName);
-            PositionListViewer.PopulateList(GetPositionsOfEmployee());
+            InsertIntoTable.InsertEmployeePosition(this._connection, this._employee.Bsn, this._positionList[this.PositionBox.SelectedIndex].PositionName);
+            this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
         }
 
         private void RemovePosition_Click(object sender, RoutedEventArgs e) {
-            if (PositionListViewer.SelectedItem == null) {
+            if (this.PositionListViewer.SelectedItem == null) {
                 MessageBox.Show("Please select a position", "NO POSITION SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeePosition(this._connection, this._employee.Bsn, PositionListViewer.SelectedItem.PositionName);
-            PositionListViewer.PopulateList(GetPositionsOfEmployee());
+            DeleteFromTable.DeleteEmployeePosition(this._connection, this._employee.Bsn, this.PositionListViewer.SelectedItem.PositionName);
+            this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
         }
     }
 }
