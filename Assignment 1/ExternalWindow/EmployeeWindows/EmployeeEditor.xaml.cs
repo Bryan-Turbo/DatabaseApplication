@@ -17,7 +17,7 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
             InitializeComponent();
             this._employee = employee;
             this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}, BSN: {this._employee.Bsn}";
-            this._connection = connection;//new DatabaseConnection("localhost", "assignment1", "root", "");
+            this._connection = connection;
             this._headquartersList = EntityContentSelector.SelectHeadquarters(this._connection);
             foreach (Headquarters hq in this._headquartersList) {
                 this.HeadquarterList.Items.Add($"{hq.PostalCode},\t{hq.BuildingName}");
