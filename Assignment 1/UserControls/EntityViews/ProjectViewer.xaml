@@ -18,7 +18,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="ProjectList" Grid.Row="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch">
+        <ListBox x:Name="ProjectList" Grid.Row="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
