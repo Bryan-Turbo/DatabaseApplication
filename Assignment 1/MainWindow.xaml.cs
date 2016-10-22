@@ -27,10 +27,9 @@ namespace Assignment_1 {
         private DatabaseConnection _connection;
         public MainWindow() {
             InitializeComponent();
+            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
 
             CheckActiveWindow();
-
-            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
         }
 
         private void CheckActiveWindow() {
