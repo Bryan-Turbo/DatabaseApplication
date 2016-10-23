@@ -96,6 +96,9 @@
     <Compile Include="UserControls\EntityViews\DegreeViewer.xaml.cs">
       <DependentUpon>DegreeViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\EntityViews\EmployeePositionViewer.xaml.cs">
+      <DependentUpon>EmployeePositionViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EntityViews\EmployeeViewer.xaml.cs">
       <DependentUpon>EmployeeViewer.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\EntityViews\DegreeViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EntityViews\EmployeePositionViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

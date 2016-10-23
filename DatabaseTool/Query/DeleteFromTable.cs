@@ -54,5 +54,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void DeleteEmployeeProject(DatabaseConnection connection, int bsn, int projectId, string positionName) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"DELETE FROM employee_project WHERE project_id = '{projectId}' AND bsn = '{bsn}' AND position_name = '{positionName}'";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

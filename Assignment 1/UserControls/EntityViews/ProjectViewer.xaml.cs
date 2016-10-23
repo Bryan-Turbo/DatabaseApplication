@@ -21,26 +21,45 @@ namespace Assignment_1.UserControls.EntityViews {
     /// Interaction logic for ProjectViewer.xaml
     /// </summary>
     public partial class ProjectViewer : UserControl {
-        public DatabaseConnection Connection;
+        public readonly DatabaseConnection Connection;
+        public bool IsShowingFailingProjects;
         private List<Project> _projectList;
         public ProjectViewer() {
             InitializeComponent();
             Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
 
-            this._projectList = EntityContentSelector.SelectProject(this.Connection);
             PopulateViewer();
         }
 
         private void PopulateViewer() {
-            ProjectList.Items.Clear();
-            foreach (Project employee in _projectList) {
-                ProjectList.Items.Add(employee);
+            this.IsShowingFailingProjects = false;
+            this._projectList = EntityContentSelector.SelectProject(this.Connection);
+            foreach (Project p in _projectList) {
+                ProjectList.Items.Add(p);
+            }
+        }
+
+        private void PopulateFailingViewer() {
+            this.IsShowingFailingProjects = true;
+            this._projectList = EntityContentSelector.SelectProject(this.Connection);
+            var hqList = EntityContentSelector.SelectHeadquarters(this.Connection);
+
+            foreach (Project p in this._projectList) {
+                Headquarters hq = hqList.Where(h => h.BuildingName == p.BuildingName).ToList()[0];
+                if (p.Budget * 0.10F < hq.Rent) {
+                    ProjectList.Items.Add(p);
+                }
             }
         }
 
         public void UpdateViewer() {
-            _projectList = EntityContentSelector.SelectProject(this.Connection);
+            ProjectList.Items.Clear();
             PopulateViewer();
+        }
+
+        public void UpdateFailingViewer() {
+            ProjectList.Items.Clear();
+            PopulateFailingViewer();
         }
 
         public Project SelectedItem {

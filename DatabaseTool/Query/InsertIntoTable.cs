@@ -55,5 +55,15 @@ namespace DatabaseTool.Query {
 
             connection.Connection.Close();
         }
+
+        public static void InsertEmployeeProject(DatabaseConnection connection, int bsn, int projectId, string positionName, int workingHours) {
+            connection.Connection.Open();
+
+            var command = connection.Connection.CreateCommand();
+            command.CommandText = $"INSERT INTO employee_project(project_id, bsn, position_name, working_hours) VALUES ('{projectId}', '{bsn}', '{positionName}', '{workingHours}')";
+            command.ExecuteNonQuery();
+
+            connection.Connection.Close();
+        }
     }
 }

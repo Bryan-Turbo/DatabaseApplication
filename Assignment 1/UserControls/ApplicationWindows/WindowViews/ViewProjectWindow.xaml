@@ -13,7 +13,7 @@
         <Button x:Name="AddProject" IsEnabled="True" Content="Add New Project" HorizontalAlignment="Left" Margin="10,0,0,135" Width="250" Height="50" VerticalAlignment="Bottom" Click="AddProject_Click"/>
         <Button x:Name="EditProject" IsEnabled="False" Content="Edit Project" HorizontalAlignment="Left" Margin="10,0,0,75" Width="250" Height="50" VerticalAlignment="Bottom" Click="EditProject_Click"/>
         <Button x:Name="RemoveProject" IsEnabled="False" Content="Delete Project" HorizontalAlignment="Left" Margin="10,0,0,15" Width="250" Height="50" VerticalAlignment="Bottom" Click="RemoveProject_Click"/>
-        <Button x:Name="CheckEmployees" IsEnabled="False" Content="Check Assigned Employees" HorizontalAlignment="Right" Margin="0,0,10,135" Width="250" Height="50" VerticalAlignment="Bottom"/>
+        <Button x:Name="CheckEmployees" IsEnabled="False" Content="Check Assigned Employees" HorizontalAlignment="Right" Margin="0,0,10,135" Width="250" Height="50" VerticalAlignment="Bottom" Click="CheckEmployees_Click"/>
         <Button x:Name="CheckRent" IsEnabled="True" Content="Show Failing Projects" HorizontalAlignment="Right" Margin="0,0,10,75" Width="250" Height="50" VerticalAlignment="Bottom" Click="CheckRent_Click"/>
         <Button x:Name="CheckAllProject" IsEnabled="True" Content="Show All Project" HorizontalAlignment="Right" Margin="0,0,10,15" Width="250" Height="50" VerticalAlignment="Bottom" Click="CheckAllProject_Click"/>
 
