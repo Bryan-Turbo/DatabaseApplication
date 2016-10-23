@@ -8,7 +8,7 @@
         x:Class="Assignment_1.MainWindow"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="MainWindow" Width="1155" Height="650">
+        Title="MainWindow" Width="1155" Height="650" Icon="AWESOMEFACE.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -22,5 +22,6 @@
 
         <Button x:Name="SelectEmployeeWindowButton" Grid.Row="1" Content="Employee Viewer" Margin="425,0,425,90" VerticalAlignment="Bottom" Height="50" Click="SelectEmployeeWindowButton_Click"/>
         <Button x:Name="SelectProjectWindowButton" Grid.Row="1" Content="Project Viewer" Margin="425,0,425,20" VerticalAlignment="Bottom" Height="50" Click="SelectProjectWindowButton_Click"/>
+        <Image x:Name="AwesomeFace" Source="Images/AWESOMEFACE.png" Height="406" Margin="385,30,385,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

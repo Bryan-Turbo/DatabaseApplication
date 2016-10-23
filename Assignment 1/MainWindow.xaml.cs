@@ -28,6 +28,7 @@ namespace Assignment_1 {
         private DispatcherTimer _timer;
         public MainWindow() {
             InitializeComponent();
+            this.Title = "Awesome Database Application";
             _timer = new DispatcherTimer {Interval = TimeSpan.FromMilliseconds(16)};
             _timer.Tick += CheckActiveWindow;
             _timer.Start();
@@ -51,6 +52,7 @@ namespace Assignment_1 {
             ViewProjectWindow.Visibility = Visibility.Hidden;
             SelectEmployeeWindowButton.Visibility = Visibility.Visible;
             SelectProjectWindowButton.Visibility = Visibility.Visible;
+            AwesomeFace.Visibility = Visibility.Visible;
         }
 
         private void SelectEmployeeWindowButton_Click(object sender, RoutedEventArgs e) {
@@ -58,6 +60,7 @@ namespace Assignment_1 {
             ViewProjectWindow.Visibility = Visibility.Hidden;
             SelectEmployeeWindowButton.Visibility = Visibility.Hidden;
             SelectProjectWindowButton.Visibility = Visibility.Hidden;
+            AwesomeFace.Visibility = Visibility.Hidden;
         }
 
         private void SelectProjectWindowButton_Click(object sender, RoutedEventArgs e) {
@@ -65,6 +68,7 @@ namespace Assignment_1 {
             ViewProjectWindow.Visibility = Visibility.Visible;
             SelectEmployeeWindowButton.Visibility = Visibility.Hidden;
             SelectProjectWindowButton.Visibility = Visibility.Hidden;
+            AwesomeFace.Visibility = Visibility.Hidden;
         }
     }
 }
