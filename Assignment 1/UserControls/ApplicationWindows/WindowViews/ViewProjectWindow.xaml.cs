@@ -56,21 +56,41 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         private void AddProject_Click(object sender, RoutedEventArgs e) {
             ProjectAddWindow window = new ProjectAddWindow(this.ProjectViewer.Connection);
             window.ShowDialog();
-            ProjectViewer.UpdateViewer();
+            UpdateProjectViewer();
             this._timer.Start();
         }
 
         private void RemoveProject_Click(object sender, RoutedEventArgs e) {
             DeleteFromTable.DeleteProject(this.ProjectViewer.Connection, this.ProjectViewer.SelectedItem.ProjectId);
-            ProjectViewer.UpdateViewer();
+            UpdateProjectViewer();
             this._timer.Start();
         }
 
         private void EditProject_Click(object sender, RoutedEventArgs e) {
             ProjectEditWindow window = new ProjectEditWindow(this.ProjectViewer.Connection, this.ProjectViewer.SelectedItem);
             window.ShowDialog();
-            ProjectViewer.UpdateViewer();
+            UpdateProjectViewer();
             this._timer.Start();
+        }
+
+        private void UpdateProjectViewer() {
+            if (this.ProjectViewer.IsShowingFailingProjects)
+                this.ProjectViewer.UpdateFailingViewer();
+            else
+                this.ProjectViewer.UpdateViewer();
+        }
+
+        private void CheckRent_Click(object sender, RoutedEventArgs e) {
+            ProjectViewer.UpdateFailingViewer();
+        }
+
+        private void CheckAllProject_Click(object sender, RoutedEventArgs e) {
+            ProjectViewer.UpdateViewer();
+        }
+
+        private void CheckEmployees_Click(object sender, RoutedEventArgs e) {
+            EmployeeProjectWindow window = new EmployeeProjectWindow(ProjectViewer.Connection, ProjectViewer.SelectedItem);
+            window.ShowDialog();
         }
     }
 }
