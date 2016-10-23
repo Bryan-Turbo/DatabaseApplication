@@ -28,9 +28,7 @@ namespace Assignment_1 {
         private DispatcherTimer _timer;
         public MainWindow() {
             InitializeComponent();
-            ConnectionHolder.Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(16);
+            _timer = new DispatcherTimer {Interval = TimeSpan.FromMilliseconds(16)};
             _timer.Tick += CheckActiveWindow;
             _timer.Start();
         }

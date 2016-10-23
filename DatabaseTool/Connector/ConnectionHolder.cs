@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DatabaseTool.Connector {
     public static class ConnectionHolder {
-        public static DatabaseConnection Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
+        public static DatabaseConnection Connection;
+
+        public static void SetConnection(string server, string databaseName, string username, string password) {
+            Connection = new DatabaseConnection(server, databaseName, username, password);
+        }
     }
 }
