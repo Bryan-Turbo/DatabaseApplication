@@ -13,7 +13,7 @@ namespace Assignment_1 {
     /// </summary>
     public partial class App : Application {
         public App() {
-            ConnectionHolder.SetConnection("localhost", "fukki", "root", "");
+            ConnectionHolder.SetConnection("localhost", "assignment1", "root", "");
         }
     }
 }
