@@ -23,7 +23,7 @@
         <ComboBox x:Name="EmployeePositionBox" HorizontalAlignment="Left" Margin="10,0,0,10" Grid.Row="1" VerticalAlignment="Bottom" Width="375" Height="40" VerticalContentAlignment="Center"/>
         <Button x:Name="AssignEmployee" Content="Assign Employee To Project" HorizontalAlignment="Right" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" Width="325" Height="40" Click="AssignEmployee_Click"/>
         <Label x:Name="WorkingHoursLabel" Content="Working Hours:" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,230,55" Grid.Row="1" VerticalAlignment="Bottom" Height="40" Width="105"/>
-        <TextBox x:Name="WorkingHours" HorizontalAlignment="Right" VerticalContentAlignment="Center" Height="40" Margin="0,0,10,55" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Width="215"/>
+        <TextBox x:Name="WorkingHours" HorizontalAlignment="Right" VerticalContentAlignment="Center" Height="40" Margin="0,0,10,55" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="215"/>
 
 
 

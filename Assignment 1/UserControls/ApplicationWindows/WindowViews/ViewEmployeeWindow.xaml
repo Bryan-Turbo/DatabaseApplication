@@ -16,7 +16,7 @@
         <Button x:Name="RemoveButton" IsEnabled="False" Content="Remove Selected Employee" HorizontalAlignment="Left" Margin="10,0,0,15" VerticalAlignment="Bottom" Width="250" Height="50" Click="RemoveButton_Click"/>
 
         <Button x:Name="EmployeeAddress" IsEnabled="False" Content="Check Employee Address" HorizontalAlignment="Right" Margin="0,0,10,135" VerticalAlignment="Bottom" Width="250" Height="50" Click="EmployeeAddress_Click" />
-        <Button x:Name="EmployeeEducation" IsEnabled="False" Content="Check Employee Eductaion" Margin="0,0,10,75" VerticalAlignment="Bottom" Height="50" HorizontalAlignment="Right" Width="250" Click="EmployeeEducation_Click"/>
+        <Button x:Name="EmployeeEducation" IsEnabled="False" Content="Check Employee Education" Margin="0,0,10,75" VerticalAlignment="Bottom" Height="50" HorizontalAlignment="Right" Width="250" Click="EmployeeEducation_Click"/>
         <Button x:Name="EmployeePosition" IsEnabled="False" Content="Check Employee Positon" HorizontalAlignment="Right" Margin="0,0,10,15" VerticalAlignment="Bottom" Width="250" Height="50" Click="EmployeePosition_Click"/>
         
 
