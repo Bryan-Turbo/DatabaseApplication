@@ -10,14 +10,12 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// </summary>
     public partial class EmployeeAdder : Window {
         private List<Headquarters> _headquartersList;
-        private DatabaseConnection _connection;
         private string _windowText;
 
-        public EmployeeAdder(DatabaseConnection connection) {
+        public EmployeeAdder( ) {
             InitializeComponent();
             this._windowText = "Add a new Employee";
-            this._connection = connection;
-            this._headquartersList = EntityContentSelector.SelectHeadquarters(this._connection);
+            this._headquartersList = EntityContentSelector.SelectHeadquarters( );
             foreach (Headquarters hq in this._headquartersList) {
                 this.MainHeadquarters.Items.Add($"{hq.PostalCode},\t{hq.BuildingName}");
             }
@@ -42,7 +40,7 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployee(this._connection, employeeBsn, this.EmployeeName.Text, this.EmployeeSurname.Text,
+            InsertIntoTable.InsertEmployee(employeeBsn, this.EmployeeName.Text, this.EmployeeSurname.Text,
                 this._headquartersList[this.MainHeadquarters.SelectedIndex].BuildingName);
         }
     }

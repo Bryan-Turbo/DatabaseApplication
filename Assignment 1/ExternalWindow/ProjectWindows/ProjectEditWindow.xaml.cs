@@ -20,16 +20,14 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
     /// Interaction logic for ProjectEditWindow.xaml
     /// </summary>
     public partial class ProjectEditWindow : Window {
-        private DatabaseConnection _connection;
         private Project _project;
 
         private List<Headquarters> _hqList;
-        public ProjectEditWindow(DatabaseConnection connection, Project project) {
+        public ProjectEditWindow(Project project) {
             InitializeComponent();
 
-            this._connection = connection;
             this._project = project;
-            this._hqList = EntityContentSelector.SelectHeadquarters(this._connection);
+            this._hqList = EntityContentSelector.SelectHeadquarters( );
 
             this.Header.Content = $"Project: {this._project.ProjectId}";
 
@@ -61,7 +59,7 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
                 MessageBox.Show("Please enter a valid amount of hours", "INVALID AMOUNT OF HOURS", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            UpdateTable.UpdateProject(this._connection, this._project.ProjectId, budget, totalHours, this._hqList[Headquarters.SelectedIndex].BuildingName);
+            UpdateTable.UpdateProject(this._project.ProjectId, budget, totalHours, this._hqList[Headquarters.SelectedIndex].BuildingName);
 
             this._project.Budget = budget;
             this._project.TotalHours = totalHours;

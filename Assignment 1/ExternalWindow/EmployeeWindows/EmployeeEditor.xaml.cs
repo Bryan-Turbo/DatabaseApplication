@@ -11,14 +11,12 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// </summary>
     public partial class EmployeeEditor : Window {
         private Employee _employee;
-        private DatabaseConnection _connection;
         private List<Headquarters> _headquartersList;
-        public EmployeeEditor(Employee employee, DatabaseConnection connection) {
+        public EmployeeEditor(Employee employee) {
             InitializeComponent();
             this._employee = employee;
             this.Header.Content = $"Employee: {this._employee.Name} {this._employee.Surname}, BSN: {this._employee.Bsn}";
-            this._connection = connection;
-            this._headquartersList = EntityContentSelector.SelectHeadquarters(this._connection);
+            this._headquartersList = EntityContentSelector.SelectHeadquarters( );
             foreach (Headquarters hq in this._headquartersList) {
                 this.HeadquarterList.Items.Add($"{hq.PostalCode},\t{hq.BuildingName}");
             }
@@ -53,7 +51,7 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
             if (this._headquartersList[this.HeadquarterList.SelectedIndex].BuildingName != this._employee.MainBuildingName) {
                 eB = this._headquartersList[this.HeadquarterList.SelectedIndex].BuildingName;
             }
-            UpdateTable.UpdateEmployee(this._connection, this._employee, eN, eS, eB);
+            UpdateTable.UpdateEmployee(this._employee, eN, eS, eB);
         }
     }
 }

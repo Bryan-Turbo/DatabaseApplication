@@ -5,11 +5,11 @@ using MySql.Data.MySqlClient;
 
 namespace DatabaseTool.Query {
     public static class EntityContentSelector {
-        public static List<Address> SelectAddress(DatabaseConnection connection) {
+        public static List<Address> SelectAddress() {
             List<Address> entityList = new List<Address>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int houseNumber;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM address";
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -22,15 +22,15 @@ namespace DatabaseTool.Query {
                     HouseNumber = houseNumber
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<Employee> SelectEmployee(DatabaseConnection connection) {
+        public static List<Employee> SelectEmployee() {
             List<Employee> entityList = new List<Employee>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -42,15 +42,15 @@ namespace DatabaseTool.Query {
                     MainBuildingName = reader["building_name"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<Headquarters> SelectHeadquarters(DatabaseConnection connection) {
+        public static List<Headquarters> SelectHeadquarters() {
             List<Headquarters> entityList = new List<Headquarters>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int rent, rooms;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM headquarters";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -64,14 +64,14 @@ namespace DatabaseTool.Query {
                     Country = reader["country"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<Degree> SelectDegree(DatabaseConnection connection) {
+        public static List<Degree> SelectDegree() {
             List<Degree> entityList = new List<Degree>();
-            connection.Connection.Open();
-            MySqlCommand command = connection.Connection.CreateCommand();
+            ConnectionHolder.Connection.Connection.Open();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM degree";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -81,14 +81,14 @@ namespace DatabaseTool.Query {
                     School = reader["school"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<Position> SelectPosition(DatabaseConnection connection) {
+        public static List<Position> SelectPosition() {
             List<Position> entityList = new List<Position>();
-            connection.Connection.Open();
-            MySqlCommand command = connection.Connection.CreateCommand();
+            ConnectionHolder.Connection.Connection.Open();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM position";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -100,16 +100,16 @@ namespace DatabaseTool.Query {
                     HourlyFee = hourlyFee
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<Project> SelectProject(DatabaseConnection connection) {
+        public static List<Project> SelectProject() {
             List<Project> entityList = new List<Project>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int projectId, totalHours;
             float budget;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM project";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -123,15 +123,15 @@ namespace DatabaseTool.Query {
                     BuildingName = reader["building_name"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<EmployeeAddress> SelectEmployeeAddress(DatabaseConnection connection) {
+        public static List<EmployeeAddress> SelectEmployeeAddress() {
             List<EmployeeAddress> entityList = new List<EmployeeAddress>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_address";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -143,15 +143,15 @@ namespace DatabaseTool.Query {
                     IsResidence = reader["is_residence"].ToString() == "1"
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<EmployeePosition> SelectEmployeePosition(DatabaseConnection connection) {
+        public static List<EmployeePosition> SelectEmployeePosition() {
             List<EmployeePosition> entityList = new List<EmployeePosition>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_position";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -161,15 +161,15 @@ namespace DatabaseTool.Query {
                     PositionName = reader["position_name"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<EmployeeProject> SelectEmployeeProject(DatabaseConnection connection) {
+        public static List<EmployeeProject> SelectEmployeeProject() {
             List<EmployeeProject> entityList = new List<EmployeeProject>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int bsn, projectId, workingHours;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_project";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -183,15 +183,15 @@ namespace DatabaseTool.Query {
                     WorkingHours = workingHours
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
 
-        public static List<EmployeeDegree> SelectEmployeeDegree(DatabaseConnection connection) {
+        public static List<EmployeeDegree> SelectEmployeeDegree() {
             List<EmployeeDegree> entityList = new List<EmployeeDegree>();
-            connection.Connection.Open();
+            ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = connection.Connection.CreateCommand();
+            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_degree";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -201,7 +201,7 @@ namespace DatabaseTool.Query {
                     Course = reader["course"].ToString()
                 });
             }
-            connection.Connection.Close();
+            ConnectionHolder.Connection.Connection.Close();
             return entityList;
         }
     }

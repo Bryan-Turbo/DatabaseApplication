@@ -45,14 +45,14 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e) {
-            EmployeeAdder adder = new EmployeeAdder(this.EmployeeViewer.Connection);
+            EmployeeAdder adder = new EmployeeAdder();
             adder.ShowDialog();
             EmployeeViewer.UpdateViewer();
             this.timer.Start();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e) {
-            EmployeeEditor editor = new EmployeeEditor(this.EmployeeViewer.GetSelectedEmployee(), this.EmployeeViewer.Connection);
+            EmployeeEditor editor = new EmployeeEditor(this.EmployeeViewer.GetSelectedEmployee());
             editor.ShowDialog();
             EmployeeViewer.UpdateViewer();
             this.timer.Start();
@@ -61,23 +61,23 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         private void RemoveButton_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee from the database?", "CONFIRM DELETION", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.No) { return; }
-            DeleteFromTable.DeleteEmployee(this.EmployeeViewer.Connection, this.EmployeeViewer.GetSelectedEmployee().Bsn);
+            DeleteFromTable.DeleteEmployee(this.EmployeeViewer.GetSelectedEmployee().Bsn);
             this.EmployeeViewer.RemoveEmployee(this.EmployeeViewer.GetSelectedEmployee());
             this.timer.Start();
         }
 
         private void EmployeeAddress_Click(object sender, RoutedEventArgs e) {
-            EmployeeAddressWindow window = new EmployeeAddressWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+            EmployeeAddressWindow window = new EmployeeAddressWindow(this.EmployeeViewer.GetSelectedEmployee());
             window.ShowDialog();
         }
 
         private void EmployeeEducation_Click(object sender, RoutedEventArgs e) {
-            EmployeeDegreeWindow window = new EmployeeDegreeWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+            EmployeeDegreeWindow window = new EmployeeDegreeWindow(this.EmployeeViewer.GetSelectedEmployee());
             window.ShowDialog();
         }
 
         private void EmployeePosition_Click(object sender, RoutedEventArgs e) {
-            EmployeePositionWindow window = new EmployeePositionWindow(this.EmployeeViewer.GetSelectedEmployee(), EmployeeViewer.Connection);
+            EmployeePositionWindow window = new EmployeePositionWindow(this.EmployeeViewer.GetSelectedEmployee());
             window.ShowDialog();
         }
     }

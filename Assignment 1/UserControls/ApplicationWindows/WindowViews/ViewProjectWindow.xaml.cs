@@ -54,20 +54,20 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         }
 
         private void AddProject_Click(object sender, RoutedEventArgs e) {
-            ProjectAddWindow window = new ProjectAddWindow(this.ProjectViewer.Connection);
+            ProjectAddWindow window = new ProjectAddWindow();
             window.ShowDialog();
             UpdateProjectViewer();
             this._timer.Start();
         }
 
         private void RemoveProject_Click(object sender, RoutedEventArgs e) {
-            DeleteFromTable.DeleteProject(this.ProjectViewer.Connection, this.ProjectViewer.SelectedItem.ProjectId);
+            DeleteFromTable.DeleteProject(this.ProjectViewer.SelectedItem.ProjectId);
             UpdateProjectViewer();
             this._timer.Start();
         }
 
         private void EditProject_Click(object sender, RoutedEventArgs e) {
-            ProjectEditWindow window = new ProjectEditWindow(this.ProjectViewer.Connection, this.ProjectViewer.SelectedItem);
+            ProjectEditWindow window = new ProjectEditWindow(this.ProjectViewer.SelectedItem);
             window.ShowDialog();
             UpdateProjectViewer();
             this._timer.Start();
@@ -89,7 +89,7 @@ namespace Assignment_1.UserControls.ApplicationWindows.WindowViews {
         }
 
         private void CheckEmployees_Click(object sender, RoutedEventArgs e) {
-            EmployeeProjectWindow window = new EmployeeProjectWindow(ProjectViewer.Connection, ProjectViewer.SelectedItem);
+            EmployeeProjectWindow window = new EmployeeProjectWindow(ProjectViewer.SelectedItem);
             window.ShowDialog();
         }
     }

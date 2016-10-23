@@ -6,11 +6,6 @@ using DatabaseTool.Entities;
 namespace DatabaseTool.Connector {
     public class DatabaseConnection : IDatabaseConnection {
         private MySqlConnection _connection;
-        private Window _window;
-
-        public DatabaseConnection(Window window) {
-            this._window = window;
-        }
 
         public MySqlConnection Connection {
             get { return this._connection; }

@@ -20,13 +20,11 @@ namespace Assignment_1 {
     /// Interaction logic for DatabaseUserInterface.xaml
     /// </summary>
     public partial class DatabaseUserInterface : Window {
-        private DatabaseConnection _connection;
         private List<Address> adressList;
 
         public DatabaseUserInterface() {
             InitializeComponent();
-            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            adressList = EntityContentSelector.SelectAddress(this._connection);
+            adressList = EntityContentSelector.SelectAddress();
             foreach (Address address in adressList) {
                 comboBox.Items.Add($"{address.PostalCode}, {address.Street}");
             }
@@ -34,7 +32,7 @@ namespace Assignment_1 {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             Address Selecteditem = adressList[comboBox.SelectedIndex];
-            //_connection.InsertIntoTable(BuildingName.Text, Rent.Text, Rooms.Text, Selecteditem.PostalCode, Selecteditem.Country);
+            // .InsertIntoTable(BuildingName.Text, Rent.Text, Rooms.Text, Selecteditem.PostalCode, Selecteditem.Country);
         }
     }
 }

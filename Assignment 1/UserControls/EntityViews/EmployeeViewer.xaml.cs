@@ -21,12 +21,10 @@ namespace Assignment_1.UserControls.EntityViews {
     /// Interaction logic for EmployeeViewer.xaml
     /// </summary>
     public partial class EmployeeViewer : UserControl {
-        public readonly DatabaseConnection Connection;
         private List<Employee> _employeeList;
         public EmployeeViewer() {
             InitializeComponent();
-            Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-            _employeeList = EntityContentSelector.SelectEmployee(this.Connection);
+            _employeeList = EntityContentSelector.SelectEmployee();
             PopulateViewer();
         }
 
@@ -47,7 +45,7 @@ namespace Assignment_1.UserControls.EntityViews {
         }
 
         public void UpdateViewer() {
-            _employeeList = EntityContentSelector.SelectEmployee(this.Connection);
+            _employeeList = EntityContentSelector.SelectEmployee();
             PopulateViewer();
         }
 

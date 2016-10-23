@@ -24,11 +24,9 @@ namespace Assignment_1 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private DatabaseConnection _connection;
         public MainWindow() {
             InitializeComponent();
-            _connection = new DatabaseConnection("localhost", "assignment1", "root", "");
-
+            ConnectionHolder.Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
             CheckActiveWindow();
         }
 

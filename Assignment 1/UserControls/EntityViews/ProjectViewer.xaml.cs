@@ -21,19 +21,17 @@ namespace Assignment_1.UserControls.EntityViews {
     /// Interaction logic for ProjectViewer.xaml
     /// </summary>
     public partial class ProjectViewer : UserControl {
-        public readonly DatabaseConnection Connection;
         public bool IsShowingFailingProjects;
         private List<Project> _projectList;
         public ProjectViewer() {
             InitializeComponent();
-            Connection = new DatabaseConnection("localhost", "assignment1", "root", "");
 
             PopulateViewer();
         }
 
         private void PopulateViewer() {
             this.IsShowingFailingProjects = false;
-            this._projectList = EntityContentSelector.SelectProject(this.Connection);
+            this._projectList = EntityContentSelector.SelectProject();
             foreach (Project p in _projectList) {
                 ProjectList.Items.Add(p);
             }
@@ -41,8 +39,8 @@ namespace Assignment_1.UserControls.EntityViews {
 
         private void PopulateFailingViewer() {
             this.IsShowingFailingProjects = true;
-            this._projectList = EntityContentSelector.SelectProject(this.Connection);
-            var hqList = EntityContentSelector.SelectHeadquarters(this.Connection);
+            this._projectList = EntityContentSelector.SelectProject();
+            var hqList = EntityContentSelector.SelectHeadquarters();
 
             foreach (Project p in this._projectList) {
                 Headquarters hq = hqList.Where(h => h.BuildingName == p.BuildingName).ToList()[0];

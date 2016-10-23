@@ -10,14 +10,12 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// Interaction logic for EmployeePositionWindow.xaml
     /// </summary>
     public partial class EmployeePositionWindow : Window {
-        private DatabaseConnection _connection;
         private Employee _employee;
 
         private List<Position> _positionList;
         private List<EmployeePosition> _employeePositionList;
-        public EmployeePositionWindow(Employee employee, DatabaseConnection connection) {
+        public EmployeePositionWindow(Employee employee) {
             InitializeComponent();
-            this._connection = connection;
             this._employee = employee;
 
             this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
@@ -30,8 +28,8 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
         }
 
         private void GetData() {
-            this._positionList = EntityContentSelector.SelectPosition(this._connection);
-            this._employeePositionList = EntityContentSelector.SelectEmployeePosition(this._connection);
+            this._positionList = EntityContentSelector.SelectPosition( );
+            this._employeePositionList = EntityContentSelector.SelectEmployeePosition( );
         }
 
         private List<Position> GetPositionsOfEmployee() {
@@ -48,7 +46,7 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
                 MessageBox.Show("Please select a position","NO POSITION SELECTED",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployeePosition(this._connection, this._employee.Bsn, this._positionList[this.PositionBox.SelectedIndex].PositionName);
+            InsertIntoTable.InsertEmployeePosition(this._employee.Bsn, this._positionList[this.PositionBox.SelectedIndex].PositionName);
             this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
         }
 
@@ -57,7 +55,7 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
                 MessageBox.Show("Please select a position", "NO POSITION SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeePosition(this._connection, this._employee.Bsn, this.PositionListViewer.SelectedItem.PositionName);
+            DeleteFromTable.DeleteEmployeePosition(this._employee.Bsn, this.PositionListViewer.SelectedItem.PositionName);
             this.PositionListViewer.PopulateList(this.GetPositionsOfEmployee());
         }
     }

@@ -20,14 +20,11 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
     /// Interaction logic for ProjectAddWindow.xaml
     /// </summary>
     public partial class ProjectAddWindow : Window {
-        private DatabaseConnection _connection;
         private List<Headquarters> _hqList;
-        public ProjectAddWindow(DatabaseConnection connection) {
+        public ProjectAddWindow( ) {
             InitializeComponent();
 
-            this._connection = connection;
-
-            this._hqList = EntityContentSelector.SelectHeadquarters(this._connection);
+            this._hqList = EntityContentSelector.SelectHeadquarters( );
             foreach (Headquarters hq in this._hqList) {
                 this.HeadquarterBox.Items.Add($"{hq.BuildingName}");
             }
@@ -51,7 +48,7 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
                 return;
             }
 
-            InsertIntoTable.InsertProject(this._connection, budget, totalHours, this._hqList[HeadquarterBox.SelectedIndex].BuildingName);
+            InsertIntoTable.InsertProject(budget, totalHours, this._hqList[HeadquarterBox.SelectedIndex].BuildingName);
         }
     }
 }

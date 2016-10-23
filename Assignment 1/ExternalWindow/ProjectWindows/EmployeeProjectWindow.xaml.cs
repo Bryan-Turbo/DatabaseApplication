@@ -27,15 +27,13 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
         private List<Position> _positionList;
         private List<Position> _selectedPositionList;
 
-        private DatabaseConnection _connection;
         private Project _project;
 
         private DispatcherTimer _timer;
 
-        public EmployeeProjectWindow(DatabaseConnection connection, Project project) {
+        public EmployeeProjectWindow(Project project) {
             InitializeComponent();
 
-            this._connection = connection;
             this._project = project;
 
             GetData();
@@ -46,10 +44,10 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
         }
 
         private void GetData() {
-            this._employeeProjectList = EntityContentSelector.SelectEmployeeProject(this._connection).Where(e => e.ProjectId == this._project.ProjectId).ToList();
-            this._employeeList = EntityContentSelector.SelectEmployee(this._connection);
-            this._employeePositionList = EntityContentSelector.SelectEmployeePosition(this._connection);
-            this._positionList = EntityContentSelector.SelectPosition(this._connection);
+            this._employeeProjectList = EntityContentSelector.SelectEmployeeProject( ).Where(e => e.ProjectId == this._project.ProjectId).ToList();
+            this._employeeList = EntityContentSelector.SelectEmployee( );
+            this._employeePositionList = EntityContentSelector.SelectEmployeePosition( );
+            this._positionList = EntityContentSelector.SelectPosition( );
 
             var bsnposList = this._employeeProjectList.Select(e => new {e.Bsn, e.PositionName});
             var feList = this._employeePositionList.OrderBy(e => e.Bsn).Where(e => bsnposList.Contains(new {e.Bsn, e.PositionName})).Select(e => e.Bsn).ToList();
@@ -117,7 +115,7 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
                 MessageBox.Show("Please enter a valid amount of hours","INVALID AMOUNT OF HOURS",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployeeProject(this._connection, this._employeeList[EmployeeBox.SelectedIndex].Bsn,
+            InsertIntoTable.InsertEmployeeProject(this._employeeList[EmployeeBox.SelectedIndex].Bsn,
                 this._project.ProjectId, _selectedPositionList[EmployeePositionBox.SelectedIndex].PositionName,
                 workingHours);
             GetData();
@@ -128,7 +126,7 @@ namespace Assignment_1.ExternalWindow.ProjectWindows {
                 MessageBox.Show("Please select an employee","NO EMPLOYEE SELECTED",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeeProject(this._connection, EmployeePositionViewer.SelectedEmployee.Bsn, this._project.ProjectId, EmployeePositionViewer.SelectedPosition.PositionName);
+            DeleteFromTable.DeleteEmployeeProject(EmployeePositionViewer.SelectedEmployee.Bsn, this._project.ProjectId, EmployeePositionViewer.SelectedPosition.PositionName);
             GetData();
         }
     }

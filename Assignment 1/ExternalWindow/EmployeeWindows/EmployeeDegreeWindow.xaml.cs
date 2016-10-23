@@ -11,15 +11,14 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
     /// </summary>
     public partial class EmployeeDegreeWindow : Window {
         private Employee _employee;
-        private DatabaseConnection _connection;
 
         private List<Degree> _degreeList;
         private List<EmployeeDegree> _employeeDegreeList;
-        public EmployeeDegreeWindow(Employee employee, DatabaseConnection connection) {
+
+        public EmployeeDegreeWindow(Employee employee) {
             InitializeComponent();
 
             this._employee = employee;
-            this._connection = connection;
 
             this.GetData();
             this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
@@ -32,8 +31,8 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
         }
 
         private void GetData() {
-            this._degreeList = EntityContentSelector.SelectDegree(this._connection);
-            this._employeeDegreeList = EntityContentSelector.SelectEmployeeDegree(this._connection).Where(e => e.Bsn == this._employee.Bsn).ToList();
+            this._degreeList = EntityContentSelector.SelectDegree();
+            this._employeeDegreeList = EntityContentSelector.SelectEmployeeDegree().Where(e => e.Bsn == this._employee.Bsn).ToList();
         }
 
         private List<Degree> GetDegreesOfEmployee(List<EmployeeDegree> eDList, List<Degree> dList) {
@@ -46,20 +45,24 @@ namespace Assignment_1.ExternalWindow.EmployeeWindows {
 
         private void AddDegree_Click(object sender, RoutedEventArgs e) {
             if (this.DegreeBox.SelectedIndex < 0) {
-                MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
-            InsertIntoTable.InsertEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[this.DegreeBox.SelectedIndex].Course);
+            InsertIntoTable.InsertEmployeeDegree(this._employee.Bsn,
+                this._degreeList[this.DegreeBox.SelectedIndex].Course);
             this.GetData();
             this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
         }
 
         private void RemoveDegree_Click(object sender, RoutedEventArgs e) {
             if (this.DegreeBox.SelectedIndex < 0) {
-                MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please select a degree", "NO DEGREE SELECTED", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
-            DeleteFromTable.DeleteEmployeeDegree(this._connection, this._employee.Bsn, this._degreeList[this.DegreeBox.SelectedIndex].Course);
+            DeleteFromTable.DeleteEmployeeDegree(this._employee.Bsn,
+                this._degreeList[this.DegreeBox.SelectedIndex].Course);
             this.GetData();
             this.DegreeViewer.PopulateList(this.GetDegreesOfEmployee(this._employeeDegreeList, this._degreeList));
         }
