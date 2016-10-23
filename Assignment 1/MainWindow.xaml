@@ -14,12 +14,13 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="Header" Content="Label" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Background="#10893E" Foreground="#EEEEEE"/>
+        <Label x:Name="Header" Grid.Row="0" Content="Label" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" Background="#10893E" Foreground="#EEEEEE"/>
+        <Button x:Name="ReturnButton" Grid.Row="0" Content="Return" HorizontalAlignment="Left" Margin="5,5,0,5" Width="125" Visibility="Hidden" Click="ReturnButton_Click"/>
 
-        
-        
-        <!--<windowViews:AddEmployeeWindow x:Name="AddEmployeeWindow" Visibility="Visible" Grid.Row="1"/>-->
         <windowViews:ViewEmployeeWindow x:Name="ViewEmployeesWindow" Visibility="Hidden" Grid.Row="1"/>
-        <windowViews:ViewProjectWindow x:Name="ViewProjectWindow" Visibility="Visible" Grid.Row="1" />
+        <windowViews:ViewProjectWindow x:Name="ViewProjectWindow" Visibility="Hidden" Grid.Row="1" />
+
+        <Button x:Name="SelectEmployeeWindowButton" Grid.Row="1" Content="Employee Viewer" Margin="425,0,425,90" VerticalAlignment="Bottom" Height="50" Click="SelectEmployeeWindowButton_Click"/>
+        <Button x:Name="SelectProjectWindowButton" Grid.Row="1" Content="Project Viewer" Margin="425,0,425,20" VerticalAlignment="Bottom" Height="50" Click="SelectProjectWindowButton_Click"/>
     </Grid>
 </Window>

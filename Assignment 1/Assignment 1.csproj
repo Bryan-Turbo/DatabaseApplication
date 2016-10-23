@@ -81,9 +81,6 @@
     <Compile Include="ExternalWindow\ProjectWindows\ProjectEditWindow.xaml.cs">
       <DependentUpon>ProjectEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ApplicationWindows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ApplicationWindows\WindowViews\ViewEmployeeWindow.xaml.cs">
       <DependentUpon>ViewEmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -156,10 +153,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ExternalWindow\EmployeeWindows\EmployeeAdder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ApplicationWindows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
