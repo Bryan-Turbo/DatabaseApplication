@@ -9,7 +9,7 @@ namespace DatabaseTool.Connector {
         public static DatabaseConnection Connection;
 
         public static void SetConnection(string server, string databaseName, string username, string password) {
-            Connection = new DatabaseConnection(server, databaseName, username, password);
+            Connection = new DatabaseConnection(databaseName);
         }
     }
 }

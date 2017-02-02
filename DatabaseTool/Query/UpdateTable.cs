@@ -10,10 +10,10 @@ namespace DatabaseTool.Query {
     public static class UpdateTable {
         public static void UpdateEmployee(Employee employee, string newName, string newSurname, string newBuildingName) {
             ConnectionHolder.Connection.Connection.Open();
-            string baseQuery = "UPDATE employee e SET ";
+            string baseQuery = "UPDATE employee SET ";
             string selectedEmployee = $"WHERE bsn = '{employee.Bsn.ToString("000000000")}'";
             var command = ConnectionHolder.Connection.Connection.CreateCommand();
-            baseQuery += $"e.name = '{newName}', e.surname = '{newSurname}', e.building_name = '{newBuildingName}' ";
+            baseQuery += $"name = '{newName}', surname = '{newSurname}', building_name = '{newBuildingName}' ";
             employee.Name = newName;
             employee.Surname = newSurname;
             employee.MainBuildingName = newBuildingName;
@@ -34,12 +34,12 @@ namespace DatabaseTool.Query {
                 bit = 1;
             }
 
-            string baseQuery = "UPDATE employee_address ea ";
+            string baseQuery = "UPDATE employee_address ";
 
             string getCurrentEmployee =
-                $"WHERE ea.bsn = '{oldEmployeeAddress.Bsn}' AND ea.postal_code = '{oldEmployeeAddress.PostalCode}' AND ea.country = '{oldEmployeeAddress.Country}' ";
+                $"WHERE bsn = '{oldEmployeeAddress.Bsn}' AND postal_code = '{oldEmployeeAddress.PostalCode}' AND country = '{oldEmployeeAddress.Country}' ";
             string changeValues =
-                $"SET ea.bsn = '{newEmployeeAddress.Bsn}', ea.postal_code = '{newEmployeeAddress.PostalCode}', ea.country = '{newEmployeeAddress.Country}', ea.is_residence = {bit} ";
+                $"SET bsn = '{newEmployeeAddress.Bsn}', postal_code = '{newEmployeeAddress.PostalCode}', country = '{newEmployeeAddress.Country}', is_residence = {bit} ";
 
             string query = baseQuery + changeValues + getCurrentEmployee;
             command.CommandText = query;
@@ -53,7 +53,7 @@ namespace DatabaseTool.Query {
 
             var command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText =
-                $"UPDATE project p SET p.budget = '{newBudget}', p.total_hours = '{newTotalHours}', p.building_name = '{newBuildingName}' WHERE p.project_id = '{oldProjectId}'";
+                $"UPDATE project SET p.budget = '{newBudget}', total_hours = '{newTotalHours}', building_name = '{newBuildingName}' WHERE project_id = '{oldProjectId}'";
             command.ExecuteNonQuery();
 
             ConnectionHolder.Connection.Connection.Close();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.SQLite;
 using DatabaseTool.Entities;
 using DatabaseTool.Connector;
 using MySql.Data.MySqlClient;
@@ -9,9 +10,9 @@ namespace DatabaseTool.Query {
             List<Address> entityList = new List<Address>();
             ConnectionHolder.Connection.Connection.Open();
             int houseNumber;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM address";
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             while (reader.Read()) {
                 int.TryParse(reader["house_number"].ToString(), out houseNumber);
                 entityList.Add(new Address {
@@ -30,7 +31,7 @@ namespace DatabaseTool.Query {
             List<Employee> entityList = new List<Employee>();
             ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -50,7 +51,7 @@ namespace DatabaseTool.Query {
             List<Headquarters> entityList = new List<Headquarters>();
             ConnectionHolder.Connection.Connection.Open();
             int rent, rooms;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM headquarters";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -71,7 +72,7 @@ namespace DatabaseTool.Query {
         public static List<Degree> SelectDegree() {
             List<Degree> entityList = new List<Degree>();
             ConnectionHolder.Connection.Connection.Open();
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM degree";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -88,7 +89,7 @@ namespace DatabaseTool.Query {
         public static List<Position> SelectPosition() {
             List<Position> entityList = new List<Position>();
             ConnectionHolder.Connection.Connection.Open();
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM position";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -109,7 +110,7 @@ namespace DatabaseTool.Query {
             ConnectionHolder.Connection.Connection.Open();
             int projectId, totalHours;
             float budget;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM project";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -131,7 +132,7 @@ namespace DatabaseTool.Query {
             List<EmployeeAddress> entityList = new List<EmployeeAddress>();
             ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_address";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -151,7 +152,7 @@ namespace DatabaseTool.Query {
             List<EmployeePosition> entityList = new List<EmployeePosition>();
             ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_position";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -169,7 +170,7 @@ namespace DatabaseTool.Query {
             List<EmployeeProject> entityList = new List<EmployeeProject>();
             ConnectionHolder.Connection.Connection.Open();
             int bsn, projectId, workingHours;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_project";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -191,7 +192,7 @@ namespace DatabaseTool.Query {
             List<EmployeeDegree> entityList = new List<EmployeeDegree>();
             ConnectionHolder.Connection.Connection.Open();
             int bsn;
-            MySqlCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
+            SQLiteCommand command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText = "SELECT * FROM employee_degree";
             var reader = command.ExecuteReader();
             while (reader.Read()) {
