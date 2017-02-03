@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment 1", "Assignment 1\Assignment 1.csproj", "{747FB013-8F43-495F-BD37-FBEB577270BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseGUI", "Assignment 1\DatabaseGUI.csproj", "{747FB013-8F43-495F-BD37-FBEB577270BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTool", "DatabaseTool\DatabaseTool.csproj", "{95D4EE3B-58BB-4DDF-9488-838BF0FA1BAA}"
 EndProject
