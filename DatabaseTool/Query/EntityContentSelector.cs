@@ -141,7 +141,7 @@ namespace DatabaseTool.Query {
                     Bsn = bsn,
                     PostalCode = reader["postal_code"].ToString(),
                     Country = reader["country"].ToString(),
-                    IsResidence = reader["is_residence"].ToString() == "1"
+                    IsResidence = reader["is_residence"].ToString() == "1" || reader["is_residence"].ToString().ToLower() == "true"
                 });
             }
             ConnectionHolder.Connection.Connection.Close();
