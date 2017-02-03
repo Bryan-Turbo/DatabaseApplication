@@ -41,11 +41,9 @@ INSERT INTO `address` (`postal_code`, `country`, `city`, `street`, `house_number
 ('3070UK', 'Netherlands', 'Rotterdam', 'Brittenlaan', 60),
 ('3075RL', 'Netherlands', 'Rotterdam', 'Rakettenligastraat', 50),
 ('3085GN', 'Netherlands', 'Rotterdam', 'Goodnightstraat', 1),
-('3096BK', 'Netherlands', 'Rotterdam', 'Bryanstraat', 96),
 ('3099ZZ', 'Netherlands', 'Rotterdam', 'Laatstestraat', 999),
 ('3141EI', 'Netherlands', 'Rotterdam', 'Cirkelstraat', 314),
 ('3144HZ', 'Netherlands', 'Rotterdam', 'Nonconsolepeasantstraat', 1440),
-('3666FF', 'Netherlands', 'Rotterdam', 'Partywiththestraat', 666),
 ('3840HD', 'Netherlands', 'Rotterdam', 'Fourkaystraat', 2160),
 ('3840MR', 'Netherlands', 'Rotterdam', 'MLGPCMASTERRACEsingel', 420);
 
