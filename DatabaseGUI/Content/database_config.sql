@@ -46,11 +46,10 @@ CREATE TABLE position (
 
 
 CREATE TABLE project (
- project_id INT NOT NULL,
+ project_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
  budget REAL,
  total_hours INT,
  building_name CHAR(25) NOT NULL,
- PRIMARY KEY (project_id),
  FOREIGN KEY (building_name) REFERENCES headquarters (building_name)
 );
 
