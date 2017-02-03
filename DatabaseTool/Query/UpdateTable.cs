@@ -53,7 +53,7 @@ namespace DatabaseTool.Query {
 
             var command = ConnectionHolder.Connection.Connection.CreateCommand();
             command.CommandText =
-                $"UPDATE project SET p.budget = '{newBudget}', total_hours = '{newTotalHours}', building_name = '{newBuildingName}' WHERE project_id = '{oldProjectId}'";
+                $"UPDATE project SET budget = '{newBudget}', total_hours = '{newTotalHours}', building_name = '{newBuildingName}' WHERE project_id = '{oldProjectId}'";
             command.ExecuteNonQuery();
 
             ConnectionHolder.Connection.Connection.Close();
