@@ -2,7 +2,6 @@
 using System.Data.SQLite;
 using DatabaseTool.Entities;
 using DatabaseTool.Connector;
-using MySql.Data.MySqlClient;
 
 namespace DatabaseTool.Query {
     public static class EntityContentSelector {
