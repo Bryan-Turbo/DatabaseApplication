@@ -7,7 +7,7 @@ namespace DatabaseGUI {
     /// </summary>
     public partial class App : Application {
         public App() {
-            ConnectionHolder.SetConnection("localhost", "assignment1", "root", "");
+            ConnectionHolder.SetConnection("database.db");
         }
     }
 }
